@@ -1,0 +1,2311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ucode — High-Converting Websites for Sri Lankan Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=Raleway:ital,wght@1,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─── */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #090909;
+      --black2: #0f0f0f;
+      --black3: #141414;
+      --white: #f0ede8;
+      --gray: #6b6b6b;
+      --gray2: #3a3a3a;
+      --emerald: #0E5E4E;
+      --emerald2: #0a4a3d;
+      --emerald-soft: rgba(14, 94, 78, 0.12);
+      --border: rgba(255, 255, 255, 0.07);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-serif: 'DM Serif Display', serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-signature: 'Raleway', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--emerald);
+      color: var(--white);
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--emerald);
+      border-radius: 2px;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1400px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 28px;
+      background: rgba(9, 9, 9, 0.3);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    nav.scrolled {
+      top: 12px;
+      padding: 12px 22px;
+      width: calc(100% - 80px);
+      background: rgba(9, 9, 9, 0.85);
+      border-radius: 50px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-brand span {
+      color: var(--emerald);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      background: var(--emerald);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--emerald2) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 24px;
+      margin-bottom: 0;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--emerald);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(60px, 9vw, 140px);
+      line-height: 0.92;
+      letter-spacing: -1px;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+    }
+
+    .hero-headline .outline {
+      font-family: var(--font-signature);
+      font-size: 0.85em;
+      font-weight: 700;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1.2px var(--emerald);
+      text-stroke: 1.2px var(--emerald);
+    }
+
+    .hero-headline .accent {
+      color: var(--emerald);
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    .hero-sub {
+      max-width: 380px;
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-sub strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--emerald);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      border-color: var(--emerald);
+      color: var(--emerald);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary svg {
+      transition: transform 0.3s;
+    }
+
+    .btn-primary:hover svg {
+      transform: translate(3px, -3px);
+    }
+
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gray);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .scroll-dot {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gray2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce 2s infinite;
+    }
+
+    /* ─── STAT PILLS ─── */
+    .hero-stats {
+      display: flex;
+      gap: 16px;
+      margin-top: 64px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .stat-pill .num {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .stat-pill .lbl {
+      font-size: 11px;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+    }
+
+    .stat-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 140px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-full {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--emerald);
+      font-weight: 500;
+      margin-bottom: 32px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--emerald);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 7vw, 100px);
+      line-height: 0.95;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 48px;
+      width: calc(100% - 96px);
+    }
+
+    /* ─── VALUE PROP ─── */
+    .value-prop {
+      text-align: center;
+      position: relative;
+    }
+
+    .value-prop .big-text {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 88px);
+      line-height: 1;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+    }
+
+    .value-prop .big-text em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--gray);
+      font-size: 0.85em;
+    }
+
+    .value-prop .body-text {
+      max-width: 520px;
+      margin: 0 auto 72px;
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 56px;
+    }
+
+    .pillar {
+      background: var(--black);
+      padding: 48px 40px;
+      text-align: left;
+      transition: background 0.3s;
+    }
+
+    .pillar:hover {
+      background: var(--black3);
+    }
+
+    .pillar-num {
+      font-family: var(--font-display);
+      font-size: 64px;
+      color: var(--emerald);
+      line-height: 1;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
+
+    .pillar-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .pillar-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .founder-sig {
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+    }
+
+    .founder-sig span {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ─── SOCIAL PROOF ─── */
+    .social-proof {
+      padding-top: 0;
+    }
+
+    .marquee-wrap {
+      overflow: hidden;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 100px;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 48px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 500;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .marquee-item::after {
+      content: '·';
+      color: var(--emerald);
+      font-size: 20px;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .number-card {
+      background: var(--black);
+      padding: 52px 44px;
+      transition: background 0.3s;
+    }
+
+    .number-card:hover {
+      background: var(--black3);
+    }
+
+    .number-card .big-num {
+      font-family: var(--font-display);
+      font-size: 72px;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .number-card .big-num .em {
+      color: var(--emerald);
+    }
+
+    .number-card .num-label {
+      font-size: 14px;
+      color: var(--gray);
+      font-weight: 400;
+    }
+
+    /* ─── FEATURES ─── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 64px;
+    }
+
+    .feature-card {
+      background: var(--black);
+      padding: 52px 44px;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--emerald);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      background: var(--black3);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      color: var(--emerald);
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .steps {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--emerald), transparent 40%, transparent 60%, var(--emerald));
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .step {
+      padding: 0 32px 0 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 64px;
+      height: 64px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--white);
+      background: var(--black);
+      margin-bottom: 32px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .step:hover .step-num {
+      background: var(--emerald);
+      border-color: var(--emerald);
+    }
+
+    .step-num::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc(100% - 32px);
+      height: 1px;
+      background: var(--border);
+    }
+
+    .step:last-child .step-num::after {
+      display: none;
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ─── CASE STUDIES ─── */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 64px;
+    }
+
+    .case-card {
+      background: var(--black2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .case-card:hover {
+      border-color: var(--emerald);
+      transform: translateY(-4px);
+    }
+
+    .case-card-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 120px;
+      color: rgba(255, 255, 255, 0.02);
+      letter-spacing: -4px;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .case-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--emerald);
+      border: 1px solid var(--emerald);
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .case-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .case-desc {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .case-result {
+      display: flex;
+      gap: 32px;
+    }
+
+    .case-metric .metric-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--white);
+      display: block;
+    }
+
+    .case-metric .metric-label {
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+    }
+
+    .case-arrow {
+      position: absolute;
+      top: 48px;
+      right: 48px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      transition: all 0.3s;
+    }
+
+    .case-card:hover .case-arrow {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: var(--white);
+      transform: rotate(-45deg);
+    }
+
+    .case-placeholder {
+      background: var(--black3);
+      border-radius: 10px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--gray2);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      background: var(--black2);
+      max-width: 100%;
+      padding: 140px 48px;
+    }
+
+    .testimonials-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .big-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--white);
+      max-width: 900px;
+      margin-bottom: 32px;
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .big-quote::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -10px;
+      font-size: 80px;
+      color: var(--emerald);
+      line-height: 1;
+      font-style: normal;
+    }
+
+    .quote-attr {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+
+    .quote-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--emerald-soft);
+      border: 1px solid var(--emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .quote-name {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .quote-role {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .testimonial-card {
+      background: var(--black);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      transition: border-color 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--emerald);
+    }
+
+    .stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      width: 14px;
+      height: 14px;
+      background: var(--emerald);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .t-text {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .t-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .t-role {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 64px;
+      align-items: start;
+    }
+
+    .price-card {
+      background: var(--black2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px 40px;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .price-card.featured {
+      background: var(--black3);
+      border-color: var(--emerald);
+      transform: scale(1.03);
+    }
+
+    .price-card.featured:hover {
+      transform: scale(1.03) translateY(-4px);
+    }
+
+    .price-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--emerald);
+      color: var(--white);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .price-tier {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 64px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .price-currency {
+      font-size: 24px;
+      vertical-align: super;
+    }
+
+    .price-period {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    .price-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 32px;
+    }
+
+    .price-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .price-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--gray);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-features li:last-child {
+      border-bottom: none;
+    }
+
+    .price-features li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--emerald-soft);
+      border: 1px solid var(--emerald);
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%230E5E4E' d='M12.5 4.5l-6 6-3-3'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .price-features li.included {
+      color: var(--white);
+    }
+
+    .btn-outline {
+      display: block;
+      text-align: center;
+      padding: 14px 28px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--emerald);
+      color: var(--emerald);
+    }
+
+    .btn-filled {
+      display: block;
+      text-align: center;
+      padding: 14px 28px;
+      background: var(--emerald);
+      border-radius: 50px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .btn-filled:hover {
+      background: var(--emerald2);
+      transform: translateY(-1px);
+    }
+
+    /* ─── FAQ ─── */
+    .faq-list {
+      margin-top: 64px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 500;
+      gap: 24px;
+      transition: color 0.2s;
+    }
+
+    .faq-q:hover {
+      color: var(--emerald);
+    }
+
+    .faq-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.3s;
+      color: var(--gray);
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s;
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-bottom: 28px;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      max-width: 100%;
+      background: var(--black2);
+      border-top: 1px solid var(--border);
+      padding: 160px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(60px, 8vw, 120px);
+      line-height: 0.95;
+      margin-bottom: 32px;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 48px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-lg {
+      padding: 18px 40px;
+      font-size: 15px;
+      border-radius: 50px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 64px 48px;
+      max-width: 100%;
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 64px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 32px;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand span {
+      color: var(--emerald);
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 260px;
+      margin-bottom: 28px;
+    }
+
+    .footer-contact a {
+      display: block;
+      font-size: 14px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+      margin-bottom: 6px;
+    }
+
+    .footer-contact a:hover {
+      color: var(--emerald);
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 14px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 48px auto 0;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(5px);
+      }
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+
+      .features-grid,
+      .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+      }
+
+      .step-num::after {
+        display: none;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 100px 24px;
+      }
+
+      nav {
+        width: calc(100% - 32px);
+        padding: 14px 20px;
+      }
+
+      .hero {
+        padding: 0 24px;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+      }
+
+      .hero-actions {
+        align-items: flex-start;
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 10px;
+      }
+
+      .divider {
+        margin: 0 24px;
+        width: calc(100% - 48px);
+      }
+    }
+
+    /* ─── MOBILE NAV ─── */
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-mobile-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="nav">
+    <a href="index.html" class="nav-brand">U<span>code</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="case-studies.html">Cases</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <div class="nav-mobile-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <div class="hero" id="home">
+    <div class="hero-inner">
+
+      <h1 class="hero-headline">
+        WE BUILD<br>
+        <span class="outline">HIGH</span>&#8209;<span class="outline">CONVERTING</span><br>
+        <span class="accent">WEBSITES.</span>
+      </h1>
+
+      <div class="hero-label">Sri Lanka's Premier Web Agency for Small Business</div>
+
+      <div class="hero-bottom">
+        <p class="hero-sub">
+          <strong>Your website should be your best salesperson.</strong><br>
+          We design and build premium, fast, conversion-optimised websites for Sri Lankan businesses — at a fraction of
+          agency prices.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">
+            Start Your Project
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <div class="scroll-hint">
+            <div class="scroll-dot">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 2v8M2 8l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            Scroll to explore
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <div class="dot"></div>
+          <span class="num">12+</span>
+          <span class="lbl">Sites Launched</span>
+        </div>
+        <div class="stat-pill">
+          <div class="dot"></div>
+          <span class="num">2 WK</span>
+          <span class="lbl">Avg. Delivery</span>
+        </div>
+        <div class="stat-pill">
+          <div class="dot"></div>
+          <span class="num">100%</span>
+          <span class="lbl">Client Satisfaction</span>
+        </div>
+        <div class="stat-pill">
+          <div class="dot"></div>
+          <span class="num">5★</span>
+          <span class="lbl">Average Rating</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── VALUE PROP ─── -->
+  <section class="value-prop" id="about">
+
+    <div class="section-label reveal">What We Stand For</div>
+
+    <div class="big-text reveal reveal-delay-1">
+      WE DON'T BUILD<br>
+      <em>pretty websites.</em><br>
+      WE BUILD WEBSITES THAT <span style="color:var(--emerald)">SELL.</span>
+    </div>
+
+    <p class="body-text reveal reveal-delay-2">
+      Every pixel has a purpose. Every section has a job. We obsess over conversion so your customers don't leave
+      without taking action — whether that's calling, booking, or buying.
+    </p>
+
+    <div class="pillars reveal reveal-delay-2">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Built Fast</div>
+        <p class="pillar-desc">Your website delivered in 2 weeks — not 3 months. Speed without sacrificing quality.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Strategic Design</div>
+        <p class="pillar-desc">Conversion-first layouts built to guide your visitors toward the action you want them to
+          take.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Affordable</div>
+        <p class="pillar-desc">Premium quality at local prices — no agency markup, no bloat. You pay for results.</p>
+      </div>
+    </div>
+
+    <div class="founder-sig reveal reveal-delay-3">
+      — <span>Umar Hunais</span>, 17 · Founder, Ucode · Colombo, Sri Lanka
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── SOCIAL PROOF ─── -->
+  <section class="social-proof" id="proof" style="padding-top: 80px;">
+
+    <div class="section-label reveal" style="margin-left: 0;">Trusted By</div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <!-- First set -->
+        <span class="marquee-item">Spice Garden Restaurant</span>
+        <span class="marquee-item">Nova Threads</span>
+        <span class="marquee-item">BrightMinds Tuition</span>
+        <span class="marquee-item">Apex Constructions</span>
+        <span class="marquee-item">Lumière Salon</span>
+        <span class="marquee-item">Ceylon Roots</span>
+        <span class="marquee-item">SkyLine Properties</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">Spice Garden Restaurant</span>
+        <span class="marquee-item">Nova Threads</span>
+        <span class="marquee-item">BrightMinds Tuition</span>
+        <span class="marquee-item">Apex Constructions</span>
+        <span class="marquee-item">Lumière Salon</span>
+        <span class="marquee-item">Ceylon Roots</span>
+        <span class="marquee-item">SkyLine Properties</span>
+      </div>
+    </div>
+
+    <div class="numbers-grid reveal">
+      <div class="number-card">
+        <div class="big-num">12<span class="em">+</span></div>
+        <div class="num-label">Sites launched in Sri Lanka</div>
+      </div>
+      <div class="number-card">
+        <div class="big-num">2<span class="em">wk</span></div>
+        <div class="num-label">Average delivery time</div>
+      </div>
+      <div class="number-card">
+        <div class="big-num">70<span class="em">%</span></div>
+        <div class="num-label">Average traffic increase post-launch</div>
+      </div>
+      <div class="number-card">
+        <div class="big-num">0<span class="em">₨</span></div>
+        <div class="num-label">Hidden fees. Ever.</div>
+      </div>
+      <div class="number-card">
+        <div class="big-num">100<span class="em">%</span></div>
+        <div class="num-label">Client satisfaction rate</div>
+      </div>
+      <div class="number-card">
+        <div class="big-num">5<span class="em">★</span></div>
+        <div class="num-label">Average client rating</div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── FEATURES ─── -->
+  <section id="services">
+
+    <div class="section-label reveal">What You Get</div>
+    <h2 class="section-title reveal reveal-delay-1">EVERYTHING<br><span style="color:var(--emerald)">INCLUDED.</span>
+    </h2>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+        </div>
+        <div class="feature-title">Conversion-First Design</div>
+        <p class="feature-desc">Every layout decision is made with one goal: turning your visitors into paying
+          customers. Strategic hierarchy, clear CTAs, and persuasive flows.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+        </div>
+        <div class="feature-title">2-Week Delivery</div>
+        <p class="feature-desc">No waiting 3 months for your site. You get a fully launched, live website in under 14
+          days — guaranteed or your money back.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+        </div>
+        <div class="feature-title">Blazing Fast Performance</div>
+        <p class="feature-desc">Google-optimised load times under 2 seconds. Faster sites rank higher and convert better
+          — we build for both.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="5" y="2" width="14" height="20" rx="2" />
+            <line x1="12" y1="18" x2="12.01" y2="18" />
+          </svg>
+        </div>
+        <div class="feature-title">Mobile-Perfect</div>
+        <p class="feature-desc">Over 80% of Sri Lankan web traffic is mobile. Every site is pixel-perfect on all screen
+          sizes, from phone to desktop.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+        </div>
+        <div class="feature-title">SEO Built-In</div>
+        <p class="feature-desc">Show up on Google when your customers search. Every site ships with on-page SEO, schema
+          markup, and local SEO for Sri Lanka.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <div class="feature-title">30-Day Support</div>
+        <p class="feature-desc">After launch, you're not on your own. 30 days of free support, bug fixes, and minor
+          changes — because your success is our reputation.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section id="process">
+
+    <div class="section-label reveal">The Process</div>
+    <h2 class="section-title reveal reveal-delay-1">HOW IT<br><span style="color:var(--emerald)">WORKS.</span></h2>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Discovery Call</div>
+        <p class="step-desc">We spend 30 minutes understanding your business, your customers, and what success looks
+          like for you. Free, no pressure.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-title">Strategy & Design</div>
+        <p class="step-desc">We map out your site architecture and build a custom design prototype. You see exactly what
+          you're getting before we build it.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-title">Build & Refine</div>
+        <p class="step-desc">We code your site with performance and conversion in mind. You give feedback. We refine
+          until it's exactly right.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div class="step-title">Launch & Grow</div>
+        <p class="step-desc">Your site goes live. We submit it to Google, set up analytics, and hand you everything you
+          need to track results from day one.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── CASE STUDIES ─── -->
+  <section id="cases">
+
+    <div class="section-label reveal">Our Work</div>
+    <h2 class="section-title reveal reveal-delay-1">CASE<br><span style="color:var(--emerald)">STUDIES.</span></h2>
+
+    <div class="cases-grid">
+
+      <!-- ELYSIAN -->
+      <a href="https://umarhunais.github.io/Elysian" target="_blank" class="case-card reveal" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">EL</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/elysian.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="Elysian Preview"></div>
+        <div class="case-tag">Travel & Tours</div>
+        <div class="case-title">Elysian</div>
+        <p class="case-desc">A premium luxury travel brand offering curated experiences beyond the ordinary. The design reflects top-tier elegance and smooth user experience.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Luxury</span>
+            <span class="metric-label">Positioning</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">100%</span>
+            <span class="metric-label">Responsive</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- AROMA -->
+      <a href="https://umarhunais.github.io/Aroma/" target="_blank" class="case-card reveal reveal-delay-1" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">AR</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/aroma.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="Aroma Preview"></div>
+        <div class="case-tag">Perfume</div>
+        <div class="case-title">Aroma House</div>
+        <p class="case-desc">Luxury perfume redefined. An elegant, high-end e-commerce concept for discovering exclusive, world-class fragrances with intuitive navigation.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Premium</span>
+            <span class="metric-label">Aesthetic</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">Fast</span>
+            <span class="metric-label">Performance</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- R&R SWEET & SAVOURY -->
+      <a href="https://umarhunais.github.io/RandR/" target="_blank" class="case-card reveal" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">RR</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/randr.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="R&R Preview"></div>
+        <div class="case-tag">Bakery & Food</div>
+        <div class="case-title">R&R Sweet & Savoury</div>
+        <p class="case-desc">A warm, appetising landing page for home-made treats in Colombo, capturing both quality and affordability to drive direct WhatsApp orders.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Direct</span>
+            <span class="metric-label">Ordering Flow</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">High</span>
+            <span class="metric-label">Engagement</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- THUBA -->
+      <a href="https://umarhunais.github.io/Thuba/" target="_blank" class="case-card reveal reveal-delay-1" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">TB</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/thuba.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="Thuba Preview"></div>
+        <div class="case-tag">Modest Fashion</div>
+        <div class="case-title">Thuba</div>
+        <p class="case-desc">An elegant e-commerce experience for Sri Lanka's finest collection of premium hijabs and modest fashion, emphasizing grace and timeless style.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Minimal</span>
+            <span class="metric-label">Design</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">Smooth</span>
+            <span class="metric-label">UX</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- LEVEN6 -->
+      <a href="https://umarhunais.github.io/test6/" target="_blank" class="case-card reveal" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">L6</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/leven6.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="Leven6 Preview"></div>
+        <div class="case-tag">Marketing Agency</div>
+        <div class="case-title">Leven6</div>
+        <p class="case-desc">A bold, dynamic digital presence for a creative marketing agency helping local brands turn attention into loyal customers through design and strategy.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Bold</span>
+            <span class="metric-label">Identity</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">Modern</span>
+            <span class="metric-label">Animations</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <div class="testimonials section-full">
+    <div class="testimonials-inner">
+
+      <div class="section-label reveal">Client Words</div>
+
+      <blockquote class="big-quote reveal reveal-delay-1">
+        Umar delivered a website that made us look like the most premium restaurant in Colombo. Bookings went up 40% in
+        the first month. Best investment we made for the business.
+      </blockquote>
+
+      <div class="quote-attr reveal reveal-delay-2">
+        <div class="quote-avatar">R</div>
+        <div>
+          <div class="quote-name">Rajan Perera</div>
+          <div class="quote-role">Owner, Spice Garden Restaurant · Colombo</div>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+          </div>
+          <p class="t-text">"We went from zero online presence to selling out our new collection in 3 weeks. The site
+            looks like something from a fashion magazine, not a small local brand."</p>
+          <div class="t-name">Aisha Farook</div>
+          <div class="t-role">Nova Threads · Colombo</div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+          </div>
+          <p class="t-text">"Parents tell us our website convinced them to choose us over bigger institutes. That's
+            exactly what we needed. Enrollment is up and we're opening a second batch."</p>
+          <div class="t-name">Priya Seneratne</div>
+          <div class="t-role">BrightMinds Tuition · Gampaha</div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+          </div>
+          <p class="t-text">"Honestly didn't expect much — he's 17. But the work blew us away. Professional, fast,
+            strategic. We get more quote requests in a week than we used to get in a month."</p>
+          <div class="t-name">Kasun Wickramasinghe</div>
+          <div class="t-role">Apex Constructions · Kandy</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PRICING ─── -->
+  <section id="pricing">
+
+    <div class="section-label reveal">Simple Pricing</div>
+    <h2 class="section-title reveal reveal-delay-1">TRANSPARENT.<br><span style="color:var(--emerald)">FAIR.
+        CLEAR.</span></h2>
+    <p class="reveal reveal-delay-2"
+      style="font-size:15px; color:var(--gray); max-width:480px; margin-top:16px; font-weight:300; line-height:1.8;">No
+      hidden fees. No surprise invoices. You know exactly what you're getting before you commit.</p>
+
+    <div class="pricing-grid">
+
+      <div class="price-card reveal">
+        <div class="price-tier">Starter</div>
+        <div class="price-amount"><span class="price-currency">$</span>399</div>
+        <div class="price-period">One-time payment</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="included">Up to 5 pages</li>
+          <li class="included">Mobile responsive</li>
+          <li class="included">Basic SEO setup</li>
+          <li class="included">Contact form</li>
+          <li class="included">2-week delivery</li>
+          <li>E-commerce</li>
+          <li>Custom animations</li>
+        </ul>
+        <a href="contact.html" class="btn-outline">Get Started</a>
+      </div>
+
+      <div class="price-card featured reveal reveal-delay-1">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-amount"><span class="price-currency">$</span>699</div>
+        <div class="price-period">One-time payment</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="included">Up to 10 pages</li>
+          <li class="included">Mobile responsive</li>
+          <li class="included">Full SEO optimisation</li>
+          <li class="included">Contact + booking form</li>
+          <li class="included">2-week delivery</li>
+          <li class="included">Scroll animations</li>
+          <li class="included">30-day support</li>
+        </ul>
+        <a href="contact.html" class="btn-filled">Start This Plan</a>
+      </div>
+
+      <div class="price-card reveal reveal-delay-2">
+        <div class="price-tier">Premium</div>
+        <div class="price-amount"><span class="price-currency">$</span>999</div>
+        <div class="price-period">One-time payment</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="included">Unlimited pages</li>
+          <li class="included">Mobile responsive</li>
+          <li class="included">Full SEO + Local SEO</li>
+          <li class="included">E-commerce ready</li>
+          <li class="included">Priority delivery</li>
+          <li class="included">Custom animations</li>
+          <li class="included">60-day support</li>
+        </ul>
+        <a href="contact.html" class="btn-outline">Get Started</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── FAQ ─── -->
+  <section id="faq">
+
+    <div class="section-label reveal">Questions</div>
+    <h2 class="section-title reveal reveal-delay-1">FREQUENTLY<br><span style="color:var(--emerald)">ASKED.</span></h2>
+
+    <div class="faq-list reveal reveal-delay-2">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span>You're 17. How do I know the quality will be professional?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="faq-a">My age is just a number — my work speaks for itself. Every site in my portfolio was delivered
+          to a paying client who saw real, measurable results. I've spent years studying conversion design, web
+          performance, and modern development. You're not paying for seniority, you're paying for results.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span>How does the 2-week delivery actually work?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="faq-a">Week 1: Discovery call, strategy, and design prototype. You review and approve the design.
+          Week 2: Full development, testing, SEO setup, and launch. The only thing that delays this is late feedback
+          from your side — which is why we keep the process structured and clear.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span>What if I don't like the design?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="faq-a">You approve the design before we build. We present the full visual prototype first, and you
+          can request revisions until it's right. We don't start coding until you're happy. This eliminates surprises at
+          the end.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span>Can you help with content and copywriting too?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="faq-a">Yes — copywriting is included in the Growth and Premium plans. Good copy is what separates a
+          website that looks good from one that converts. We write persuasive, SEO-friendly content tailored to your
+          specific audience in Sri Lanka.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span>Do you offer payment in LKR?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="faq-a">Absolutely. All projects can be quoted and paid in Sri Lankan Rupees. We also offer a 50%
+          upfront / 50% on delivery payment structure so there's no risk on your end.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span>What happens after the site launches?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="faq-a">Depending on your plan, you get 30–60 days of free post-launch support. That covers bug
+          fixes, small content updates, and any tweaks you need. After that, we offer affordable monthly maintenance
+          packages so your site stays fast and up-to-date.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <div class="cta-section section-full" id="contact">
+    <div class="cta-inner">
+      <div class="section-label reveal" style="justify-content:center;">Ready to start?</div>
+      <h2 class="cta-title reveal reveal-delay-1">LET'S BUILD<br>SOMETHING<br><span
+          style="color:var(--emerald)">GREAT.</span></h2>
+      <p class="cta-sub reveal reveal-delay-2">Your competitors are already online. Every day without a high-converting
+        website is revenue left on the table. Let's fix that — in 2 weeks.</p>
+      <div class="cta-actions reveal reveal-delay-3">
+        <a href="contact.html" class="btn-primary btn-lg">
+          Start Your Project
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="https://wa.me/94XXXXXXXXX" class="btn-outline btn-lg" style="border-color: var(--border);">
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">U<span>code</span></div>
+        <p class="footer-tagline">High-converting websites for Sri Lankan small businesses. Built fast. Built to sell.
+        </p>
+        <div class="footer-contact">
+          <a href="mailto:hello@ucode.lk">hello@ucode.lk</a>
+          <a href="https://wa.me/94XXXXXXXXX">WhatsApp</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="case-studies.html">Cases</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">SEO Optimisation</a></li>
+          <li><a href="#">E-Commerce Sites</a></li>
+          <li><a href="#">Landing Pages</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Industries</div>
+        <ul class="footer-links">
+          <li><a href="case-studies.html#elysian">Travel & Tours</a></li>
+          <li><a href="case-studies.html#aroma">Perfume & Retail</a></li>
+          <li><a href="case-studies.html#randr">Bakery & Food</a></li>
+          <li><a href="case-studies.html#thuba">Modest Fashion</a></li>
+          <li><a href="case-studies.html#leven6">Marketing Agency</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Ucode. All rights reserved. Built by Umar Hunais.</span>
+      <span>Colombo, Sri Lanka 🇱🇰</span>
+    </div>
+  </footer>
+
+  <!-- ─── JS ─── -->
+  <script>
+    // Scroll nav shrink
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Reveal on scroll — with immediate fallback for elements already in view
+    const reveals = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      reveals.forEach(el => observer.observe(el));
+    } else {
+      // Fallback: make everything visible immediately
+      reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    // Safety net: anything still hidden after 1.5s gets revealed
+    setTimeout(() => {
+      reveals.forEach(el => el.classList.add('visible'));
+    }, 1500);
+
+    // FAQ accordion
+    function toggleFAQ(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Mobile menu
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      if (links.style.display === 'flex') {
+        links.style.display = '';
+      } else {
+        links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(9,9,9,0.97);padding:24px 28px;gap:16px;border-radius:0 0 16px 16px;border:1px solid rgba(255,255,255,0.07);border-top:none;margin-top:8px;';
+      }
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
