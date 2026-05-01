@@ -27,6 +27,32 @@
     ::-webkit-scrollbar-track{background:var(--black);}
     ::-webkit-scrollbar-thumb{background:var(--emerald);border-radius:2px;}
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:9999;}
+    
+    /* GRID & LASER & GLOW */
+    .grid-pattern {
+      position: fixed; inset: 0;
+      background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 50px 50px; pointer-events: none; z-index: -3;
+    }
+    .bg-glow {
+      position: fixed; width: 100vw; height: 100vw;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.2) 0%, transparent 70%);
+      top: -30vw; left: 50%; transform: translateX(-50%);
+      pointer-events: none; z-index: -2; filter: blur(120px);
+    }
+    .laserbeam {
+      position: fixed; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--emerald) 10%, #fff 50%, var(--emerald) 90%, transparent 100%);
+      box-shadow: 0 0 15px #fff, 0 0 30px var(--emerald), 0 0 60px var(--emerald), 0 0 100px var(--emerald);
+      opacity: 0; pointer-events: none; z-index: -1;
+      animation: laserMove 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @keyframes laserMove {
+      0% { top: -10%; opacity: 0; transform: scaleX(0.8); }
+      5% { opacity: 1; transform: scaleX(1); }
+      95% { opacity: 1; transform: scaleX(1); }
+      100% { top: 110%; opacity: 0; transform: scaleX(0.8); }
+    }
 
     /* NAV */
     nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:1400px;display:flex;align-items:center;justify-content:space-between;padding:10px 28px;background:rgba(9,9,9,0.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;z-index:1000;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);}
@@ -176,6 +202,9 @@
   </style>
 </head>
 <body>
+  <div class="grid-pattern"></div>
+  <div class="bg-glow"></div>
+  <div class="laserbeam"></div>
 
   <nav id="nav">
     <a href="index.html" class="nav-brand">U<span>code</span></a>
