@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Studies — Ucode | Real Results for Sri Lankan Businesses</title>
+  <title>Services — Ucode | What We Build & How We Build It</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=Raleway:ital,wght@1,700&display=swap" rel="stylesheet" />
@@ -27,7 +27,34 @@
     ::-webkit-scrollbar-track{background:var(--black);}
     ::-webkit-scrollbar-thumb{background:var(--emerald);border-radius:2px;}
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:9999;}
+    
+    /* GRID & LASER & GLOW */
+    .grid-pattern {
+      position: fixed; inset: 0;
+      background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 50px 50px; pointer-events: none; z-index: -3;
+    }
+    .bg-glow {
+      position: fixed; width: 100vw; height: 100vw;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.2) 0%, transparent 70%);
+      top: -30vw; left: 50%; transform: translateX(-50%);
+      pointer-events: none; z-index: -2; filter: blur(120px);
+    }
+    .laserbeam {
+      position: fixed; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--emerald) 10%, #fff 50%, var(--emerald) 90%, transparent 100%);
+      box-shadow: 0 0 15px #fff, 0 0 30px var(--emerald), 0 0 60px var(--emerald), 0 0 100px var(--emerald);
+      opacity: 0; pointer-events: none; z-index: -1;
+      animation: laserMove 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @keyframes laserMove {
+      0% { top: -10%; opacity: 0; transform: scaleX(0.8); }
+      5% { opacity: 1; transform: scaleX(1); }
+      95% { opacity: 1; transform: scaleX(1); }
+      100% { top: 110%; opacity: 0; transform: scaleX(0.8); }
+    }
 
+    /* NAV */
     nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:1400px;display:flex;align-items:center;justify-content:space-between;padding:10px 28px;background:rgba(9,9,9,0.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;z-index:1000;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);}
     nav.scrolled{top:12px;padding:12px 22px;width:calc(100% - 80px);background:rgba(9,9,9,0.85);border-radius:50px;}
     .nav-brand{font-family:var(--font-display);font-size:22px;letter-spacing:3px;color:var(--white);text-decoration:none;}
@@ -49,13 +76,14 @@
 
     /* PAGE HERO */
     .page-hero{min-height:58vh;display:flex;flex-direction:column;justify-content:flex-end;padding:160px 48px 80px;position:relative;overflow:hidden;}
-    .page-hero::before{content:'';position:absolute;top:-10%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(14,94,78,0.1) 0%,transparent 65%);pointer-events:none;}
+    .page-hero::before{content:'';position:absolute;top:-10%;left:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(14,94,78,0.1) 0%,transparent 65%);pointer-events:none;}
+    .page-hero::after{content:'';position:absolute;bottom:-20%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(14,94,78,0.06) 0%,transparent 70%);pointer-events:none;}
     .page-hero-inner{max-width:1400px;margin:0 auto;width:100%;position:relative;}
     .page-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--emerald);font-weight:500;margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;}
     .page-label::before{content:'';display:block;width:24px;height:1px;background:var(--emerald);}
     .page-hero-title{font-family:var(--font-display);font-size:clamp(64px,9vw,140px);line-height:0.92;letter-spacing:-1px;opacity:0;transform:translateY(40px);animation:fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;}
     .page-hero-title .accent{color:var(--emerald);}
-    .page-hero-sub{margin-top:36px;max-width:560px;font-size:16px;color:var(--gray);line-height:1.8;font-weight:300;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.55s forwards;}
+    .page-hero-sub{margin-top:36px;max-width:580px;font-size:16px;color:var(--gray);line-height:1.8;font-weight:300;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.55s forwards;}
     .page-hero-sub strong{color:var(--white);font-weight:500;}
 
     section{padding:120px 48px;max-width:1400px;margin:0 auto;}
@@ -65,47 +93,62 @@
     .section-title{font-family:var(--font-display);font-size:clamp(52px,7vw,100px);line-height:0.95;letter-spacing:-0.5px;margin-bottom:24px;}
     .divider{height:1px;background:var(--border);margin:0 48px;width:calc(100% - 96px);}
 
-    /* CASE FILTER PILLS */
-    .filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:72px;}
-    .filter-pill{padding:8px 20px;border:1px solid var(--border);border-radius:50px;font-size:12px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;cursor:pointer;background:transparent;transition:all 0.2s;font-family:var(--font-body);}
-    .filter-pill:hover,.filter-pill.active{border-color:var(--emerald);color:var(--emerald);background:var(--emerald-soft);}
+    /* SERVICE BLOCKS */
+    .service-block{padding:100px 48px;max-width:100%;}
+    .service-block.alt{background:var(--black2);}
+    .service-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center;}
+    .service-inner.flip{direction:rtl;}
+    .service-inner.flip > *{direction:ltr;}
+    .service-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--emerald);font-weight:500;margin-bottom:24px;}
+    .service-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--emerald);}
+    .service-headline{font-family:var(--font-display);font-size:clamp(48px,5vw,80px);line-height:0.95;letter-spacing:-0.5px;margin-bottom:28px;}
+    .service-headline .accent{color:var(--emerald);}
+    .service-desc{font-size:15px;color:var(--gray);line-height:1.9;font-weight:300;margin-bottom:40px;}
+    .service-desc strong{color:var(--white);font-weight:500;}
+    .service-outcomes{margin-bottom:48px;}
+    .service-outcome-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);font-weight:500;margin-bottom:16px;}
+    .outcome-list{display:flex;flex-direction:column;gap:10px;}
+    .outcome-item{display:flex;align-items:flex-start;gap:14px;font-size:14px;color:var(--gray);line-height:1.5;}
+    .outcome-item .dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:6px;}
+    .outcome-item.highlight{color:var(--white);}
+    .service-cta{display:inline-flex;align-items:center;gap:12px;color:var(--emerald);font-size:14px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;text-decoration:none;transition:gap 0.3s;}
+    .service-cta:hover{gap:20px;}
+    .service-cta svg{transition:transform 0.3s;}
+    .service-cta:hover svg{transform:translate(4px,-4px);}
 
-    /* CASE STUDY BLOCKS */
-    .case-block{padding:100px 48px;max-width:100%;border-bottom:1px solid var(--border);}
-    .case-block:last-child{border-bottom:none;}
-    .case-block.alt{background:var(--black2);}
-    .case-inner{max-width:1400px;margin:0 auto;}
+    /* SERVICE VISUAL */
+    .service-visual{position:relative;}
+    .service-card-visual{background:var(--black3);border:1px solid var(--border);border-radius:20px;padding:48px;aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:border-color 0.3s;}
+    .service-card-visual:hover{border-color:rgba(14,94,78,0.4);}
+    .service-card-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(14,94,78,0.08) 0%,transparent 60%);pointer-events:none;}
+    .service-visual-num{font-family:var(--font-display);font-size:120px;color:rgba(255,255,255,0.03);line-height:1;letter-spacing:-2px;position:absolute;top:20px;right:24px;}
+    .service-visual-icon{width:56px;height:56px;border:1px solid rgba(14,94,78,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--emerald-soft);color:var(--emerald);}
+    .service-visual-tags{display:flex;flex-wrap:wrap;gap:8px;}
+    .service-tag{padding:6px 14px;border:1px solid var(--border);border-radius:50px;font-size:11px;color:var(--gray);letter-spacing:1px;background:rgba(255,255,255,0.02);}
+    .service-tag.em{border-color:rgba(14,94,78,0.4);color:var(--emerald);background:var(--emerald-soft);}
 
-    .case-header{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;margin-bottom:64px;}
-    .case-num{font-family:var(--font-display);font-size:11px;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-bottom:16px;}
-    .case-industry-tag{display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--emerald);border:1px solid var(--emerald);padding:4px 14px;border-radius:50px;margin-bottom:20px;}
-    .case-title{font-family:var(--font-display);font-size:clamp(44px,5vw,76px);line-height:0.95;letter-spacing:-0.5px;margin-bottom:16px;}
-    .case-subtitle{font-size:15px;color:var(--gray);max-width:480px;line-height:1.7;}
-    .case-metrics-side{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;min-width:200px;}
-    .case-metric-item{padding:20px 28px;border-bottom:1px solid var(--border);background:var(--black3);}
-    .case-metric-item:last-child{border-bottom:none;}
-    .case-metric-val{font-family:var(--font-display);font-size:40px;color:var(--white);line-height:1;letter-spacing:-0.5px;}
-    .case-metric-val .em{color:var(--emerald);}
-    .case-metric-lbl{font-size:11px;color:var(--gray);letter-spacing:0.5px;margin-top:4px;}
+    /* WHAT'S INCLUDED STRIP */
+    .included-section{background:var(--black2);max-width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .included-inner{max-width:1400px;margin:0 auto;padding:120px 48px;}
+    .included-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:64px;}
+    .included-card{background:var(--black2);padding:52px 44px;transition:background 0.3s;position:relative;overflow:hidden;}
+    .included-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--emerald);transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
+    .included-card:hover::after{transform:scaleX(1);}
+    .included-card:hover{background:var(--black3);}
+    .included-icon{width:48px;height:48px;border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;color:var(--emerald);}
+    .included-title{font-size:18px;font-weight:600;margin-bottom:12px;}
+    .included-desc{font-size:14px;color:var(--gray);line-height:1.7;}
 
-    .case-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;}
-    .case-col-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--emerald);font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-    .case-col-title::before{content:'';display:block;width:20px;height:1px;background:var(--emerald);}
-    .case-col-content{font-size:14px;color:var(--gray);line-height:1.9;}
-    .case-col-content strong{color:var(--white);font-weight:500;}
-    .case-col-content p{margin-bottom:12px;}
-    .case-col-content p:last-child{margin-bottom:0;}
-
-    .case-mockup{margin-top:56px;background:var(--black3);border:1px solid var(--border);border-radius:16px;height:240px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-    .case-mockup-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:160px;color:rgba(255,255,255,0.018);letter-spacing:-4px;user-select:none;}
-    .case-mockup-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray2);position:relative;}
-
-    /* TESTIMONIAL PULL */
-    .case-quote{margin-top:56px;padding:40px 48px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,0.015);position:relative;}
-    .case-quote::before{content:'"';position:absolute;top:20px;left:40px;font-family:var(--font-serif);font-size:72px;color:var(--emerald);line-height:1;opacity:0.6;}
-    .case-quote-text{font-family:var(--font-serif);font-style:italic;font-size:clamp(18px,2vw,26px);line-height:1.5;color:var(--white);padding-left:24px;margin-bottom:24px;}
-    .case-quote-attr{font-size:13px;color:var(--gray);padding-left:24px;}
-    .case-quote-attr strong{color:var(--white);font-weight:500;}
+    /* PROCESS */
+    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:80px;position:relative;}
+    .process-steps::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:1px;background:var(--border);z-index:0;}
+    .process-step{padding:0 32px 0 0;position:relative;z-index:1;}
+    .step-num{width:64px;height:64px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;color:var(--white);background:var(--black);margin-bottom:32px;position:relative;transition:all 0.3s;}
+    .step-num::after{content:'';position:absolute;left:100%;top:50%;transform:translateY(-50%);width:100%;height:1px;background:var(--border);}
+    .process-step:last-child .step-num::after{display:none;}
+    .process-step:hover .step-num{background:var(--emerald);border-color:var(--emerald);}
+    .step-title{font-size:17px;font-weight:600;margin-bottom:10px;}
+    .step-desc{font-size:14px;color:var(--gray);line-height:1.7;}
 
     /* CTA */
     .cta-section{max-width:100%;background:var(--black2);border-top:1px solid var(--border);padding:160px 48px;text-align:center;position:relative;overflow:hidden;}
@@ -135,22 +178,22 @@
     .footer-bottom{max-width:1400px;margin:0 auto;padding-top:32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--gray);}
 
     @media(max-width:1100px){
-      .case-body{grid-template-columns:1fr 1fr;}
-      .case-header{grid-template-columns:1fr;}
-      .case-metrics-side{flex-direction:row;}
-      .case-metric-item{border-bottom:none;border-right:1px solid var(--border);}
-      .case-metric-item:last-child{border-right:none;}
+      .service-inner{grid-template-columns:1fr;gap:60px;}
+      .service-inner.flip{direction:ltr;}
+      .included-grid{grid-template-columns:1fr 1fr;}
+      .process-steps{grid-template-columns:1fr 1fr;gap:48px;}
+      .process-steps::before{display:none;}
+      .step-num::after{display:none;}
     }
     @media(max-width:768px){
       .nav-links{display:none;}
       .nav-mobile-toggle{display:flex;}
       .page-hero{padding:140px 24px 60px;}
       section{padding:80px 24px;}
-      .case-block{padding:80px 24px;}
-      .case-body{grid-template-columns:1fr;}
-      .case-metrics-side{flex-direction:column;}
-      .case-metric-item{border-right:none;border-bottom:1px solid var(--border);}
-      .case-quote{padding:32px 28px;}
+      .service-block{padding:80px 24px;}
+      .included-inner{padding:80px 24px;}
+      .included-grid{grid-template-columns:1fr;}
+      .process-steps{grid-template-columns:1fr;}
       .footer-inner{grid-template-columns:1fr;gap:40px;}
       .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
       .cta-section{padding:100px 24px;}
@@ -159,14 +202,17 @@
   </style>
 </head>
 <body>
+  <div class="grid-pattern"></div>
+  <div class="bg-glow"></div>
+  <div class="laserbeam"></div>
 
   <nav id="nav">
     <a href="index.html" class="nav-brand">U<span>code</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="case-studies.html" class="active">Cases</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="case-studies.html">Cases</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="contact.html" class="nav-cta">Contact</a></li>
     </ul>
@@ -178,298 +224,299 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div class="page-label">Our Work</div>
+      <div class="page-label">What We Do</div>
       <h1 class="page-hero-title">
-        RESULTS<br>
-        DON'T<br>
-        <span class="accent">LIE.</span>
+        EVERY SERVICE<br>
+        BUILT TO<br>
+        <span class="accent">PERFORM.</span>
       </h1>
       <p class="page-hero-sub">
-        <strong>Five Sri Lankan businesses. Five real problems.</strong><br>
-        This is how strategic web design translated into measurable outcomes — more traffic, more leads, more revenue.
+        <strong>We don't offer a menu of random deliverables.</strong><br>
+        We offer a focused set of high-impact services — each one designed to move the needle on your most important metric: revenue.
       </p>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- CASE INDEX -->
-  <section style="padding-bottom:0;">
-    <div class="section-label reveal">All Cases</div>
-    <div class="filter-row reveal reveal-delay-1">
-      <button class="filter-pill active">All Industries</button>
-      <button class="filter-pill">Restaurant</button>
-      <button class="filter-pill">Fashion</button>
-      <button class="filter-pill">Education</button>
-      <button class="filter-pill">Construction</button>
-      <button class="filter-pill">Beauty</button>
+  <!-- SERVICE 01 — WEB DESIGN -->
+  <div class="service-block" id="web-design">
+    <div class="service-inner">
+      <div class="reveal">
+        <div class="service-eyebrow">Service 01</div>
+        <h2 class="service-headline">CUSTOM<br>WEB<br><span class="accent">DESIGN.</span></h2>
+        <p class="service-desc">
+          No templates. No drag-and-drop builders. Every pixel is intentional. <strong>We design bespoke websites</strong> that reflect your brand's identity while being engineered to guide visitors toward the action your business needs them to take.
+          <br><br>
+          The design process starts with your customer — who they are, what they trust, what makes them click. We reverse-engineer the visual system from there.
+        </p>
+        <div class="service-outcomes">
+          <div class="service-outcome-title">What You Get</div>
+          <div class="outcome-list">
+            <div class="outcome-item highlight"><div class="dot"></div>A website unique to your brand — not reused anywhere</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Full desktop and mobile design, pixel-perfect at every breakpoint</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Visual prototype approval before a single line of code is written</div>
+            <div class="outcome-item"><div class="dot"></div>Typography, spacing, and color systems built to last</div>
+            <div class="outcome-item"><div class="dot"></div>Micro-interactions and animations that feel premium, not gimmicky</div>
+          </div>
+        </div>
+        <a href="contact.html" class="service-cta">
+          Start a Design Project
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="service-visual reveal reveal-delay-1">
+        <div class="service-card-visual">
+          <div class="service-visual-num">01</div>
+          <div class="service-visual-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/><circle cx="7" cy="6" r="1"/><circle cx="10.5" cy="6" r="1"/></svg>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:28px;margin-bottom:12px;">CUSTOM DESIGN</div>
+            <div class="service-visual-tags">
+              <span class="service-tag em">Bespoke Only</span>
+              <span class="service-tag">No Templates</span>
+              <span class="service-tag">Brand-First</span>
+              <span class="service-tag em">Prototype First</span>
+              <span class="service-tag">Mobile Perfect</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SERVICE 02 — CONVERSION OPTIMIZATION -->
+  <div class="service-block alt" id="conversion">
+    <div class="service-inner flip">
+      <div class="reveal">
+        <div class="service-eyebrow">Service 02</div>
+        <h2 class="service-headline">CONVERSION<br>OPTIMI-<br><span class="accent">ZATION.</span></h2>
+        <p class="service-desc">
+          Traffic without conversion is just noise. <strong>We engineer your site's layout, copy, and user flow</strong> around one goal: turning visitors into paying customers, leads, or bookings.
+          <br><br>
+          This means studying how your target audience behaves online, what objections they have, and designing a site that answers those objections before the visitor even forms them.
+        </p>
+        <div class="service-outcomes">
+          <div class="service-outcome-title">What You Get</div>
+          <div class="outcome-list">
+            <div class="outcome-item highlight"><div class="dot"></div>Conversion-focused section hierarchy — every scroll has a purpose</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Strategic CTA placement that feels natural, not pushy</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Trust signals, social proof, and objection handling baked into layout</div>
+            <div class="outcome-item"><div class="dot"></div>Headline and copy review for persuasiveness and clarity</div>
+            <div class="outcome-item"><div class="dot"></div>Competitor analysis to understand what's working in your market</div>
+          </div>
+        </div>
+        <a href="contact.html" class="service-cta">
+          Improve My Conversions
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="service-visual reveal reveal-delay-1">
+        <div class="service-card-visual">
+          <div class="service-visual-num">02</div>
+          <div class="service-visual-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:28px;margin-bottom:12px;">CONVERSION-FIRST</div>
+            <div class="service-visual-tags">
+              <span class="service-tag em">CRO Strategy</span>
+              <span class="service-tag">Funnel Design</span>
+              <span class="service-tag em">Copywriting</span>
+              <span class="service-tag">Trust Signals</span>
+              <span class="service-tag">Competitor Audit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SERVICE 03 — PERFORMANCE & SPEED -->
+  <div class="service-block" id="performance">
+    <div class="service-inner">
+      <div class="reveal">
+        <div class="service-eyebrow">Service 03</div>
+        <h2 class="service-headline">SPEED &<br>PERFOR-<br><span class="accent">MANCE.</span></h2>
+        <p class="service-desc">
+          <strong>A 1-second delay in page load time reduces conversions by 7%.</strong> Most Sri Lankan business websites load in 5–8 seconds. That's revenue evaporating on every page load.
+          <br><br>
+          We engineer every site for speed from the ground up — not as an afterthought, not as a paid upgrade. Compressed assets, optimized code, proper caching, and sub-2-second load times are the baseline.
+        </p>
+        <div class="service-outcomes">
+          <div class="service-outcome-title">What You Get</div>
+          <div class="outcome-list">
+            <div class="outcome-item highlight"><div class="dot"></div>Google PageSpeed score of 90+ on mobile and desktop</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Core Web Vitals fully passing (LCP, FID, CLS)</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Compressed images, minified code, efficient asset loading</div>
+            <div class="outcome-item"><div class="dot"></div>Faster rankings — Google rewards fast sites with higher positions</div>
+            <div class="outcome-item"><div class="dot"></div>Better mobile experience for Sri Lanka's 80%+ mobile web users</div>
+          </div>
+        </div>
+        <a href="contact.html" class="service-cta">
+          Speed Up My Site
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="service-visual reveal reveal-delay-1">
+        <div class="service-card-visual">
+          <div class="service-visual-num">03</div>
+          <div class="service-visual-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:28px;margin-bottom:12px;">90+ PAGESPEED</div>
+            <div class="service-visual-tags">
+              <span class="service-tag em">Sub-2s Load Time</span>
+              <span class="service-tag">Core Web Vitals</span>
+              <span class="service-tag em">SEO Ready</span>
+              <span class="service-tag">Mobile First</span>
+              <span class="service-tag">Compressed Assets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SERVICE 04 — ONGOING SUPPORT -->
+  <div class="service-block alt" id="support">
+    <div class="service-inner flip">
+      <div class="reveal">
+        <div class="service-eyebrow">Service 04</div>
+        <h2 class="service-headline">ONGOING<br><span class="accent">SUPPORT.</span></h2>
+        <p class="service-desc">
+          Your website isn't a one-time project — it's a living business asset. <strong>We stay available after launch</strong> to keep it running cleanly, updated accurately, and performing consistently.
+          <br><br>
+          All projects include a post-launch support window. Beyond that, we offer affordable monthly maintenance packages so there's always someone to call when something needs attention.
+        </p>
+        <div class="service-outcomes">
+          <div class="service-outcome-title">What You Get</div>
+          <div class="outcome-list">
+            <div class="outcome-item highlight"><div class="dot"></div>30–60 days of free post-launch support included in all plans</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Bug fixes, content updates, and minor tweaks handled quickly</div>
+            <div class="outcome-item highlight"><div class="dot"></div>Affordable monthly retainer if you need ongoing help</div>
+            <div class="outcome-item"><div class="dot"></div>Priority scheduling for existing clients on future projects</div>
+            <div class="outcome-item"><div class="dot"></div>Regular check-ins for Growth and Authority plan clients</div>
+          </div>
+        </div>
+        <a href="contact.html" class="service-cta">
+          Ask About Support
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="service-visual reveal reveal-delay-1">
+        <div class="service-card-visual">
+          <div class="service-visual-num">04</div>
+          <div class="service-visual-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:28px;margin-bottom:12px;">POST-LAUNCH CARE</div>
+            <div class="service-visual-tags">
+              <span class="service-tag em">30–60 Day Support</span>
+              <span class="service-tag">Bug Fixes</span>
+              <span class="service-tag em">Monthly Retainer</span>
+              <span class="service-tag">Content Updates</span>
+              <span class="service-tag">Priority Access</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EVERYTHING INCLUDED -->
+  <div class="included-section">
+    <div class="included-inner">
+      <div class="section-label reveal">Always Included</div>
+      <h2 class="section-title reveal reveal-delay-1">EVERY PROJECT<br><span style="color:var(--emerald)">COMES WITH.</span></h2>
+      <div class="included-grid">
+        <div class="included-card reveal">
+          <div class="included-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <div class="included-title">Mobile Responsive</div>
+          <p class="included-desc">Every site is tested and optimised across all screen sizes — phone, tablet, and desktop. No broken layouts on mobile.</p>
+        </div>
+        <div class="included-card reveal reveal-delay-1">
+          <div class="included-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+          <div class="included-title">Basic SEO Setup</div>
+          <p class="included-desc">Meta titles, descriptions, heading structure, image alt tags, and sitemap — properly configured for Google to find and index your site.</p>
+        </div>
+        <div class="included-card reveal reveal-delay-2">
+          <div class="included-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <div class="included-title">Clean, Owned Code</div>
+          <p class="included-desc">You own everything. The codebase, the files, the hosting. No locked-in platforms, no monthly SaaS fees, no dependencies you can't leave.</p>
+        </div>
+        <div class="included-card reveal reveal-delay-1">
+          <div class="included-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/></svg></div>
+          <div class="included-title">WhatsApp & Contact Integration</div>
+          <p class="included-desc">Working contact forms, WhatsApp click-to-chat buttons, and Google Maps integration — all set up and tested before launch.</p>
+        </div>
+        <div class="included-card reveal reveal-delay-2">
+          <div class="included-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="included-title">Speed Optimisation</div>
+          <p class="included-desc">Compressed images, clean code, efficient loading — we hit Google's Core Web Vitals benchmarks on every project before it ships.</p>
+        </div>
+        <div class="included-card reveal reveal-delay-3">
+          <div class="included-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="included-title">Launch-Ready Delivery</div>
+          <p class="included-desc">We don't hand off broken files and say "good luck." Your site is live, tested, and working when the project closes. Domain, hosting, email — all sorted.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="section-label reveal">Our Process</div>
+    <h2 class="section-title reveal reveal-delay-1">HOW EVERY<br><span style="color:var(--emerald)">PROJECT RUNS.</span></h2>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Discovery & Scoping</div>
+        <p class="step-desc">A focused call to understand your business, audience, goals, and competitors. We define scope, deliverables, and timeline before anything starts.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-title">Strategy & Wireframe</div>
+        <p class="step-desc">We map the information architecture and content strategy. What pages? What sections? What CTA sequence? All decided before visual design begins.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-title">Design & Approval</div>
+        <p class="step-desc">Full visual prototype delivered for your review. Revisions until it's right. You sign off before a single line of code is written.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div class="step-title">Build, Test & Launch</div>
+        <p class="step-desc">Development, speed optimisation, SEO setup, cross-device testing — then launch. You get a live, working site and the support to back it up.</p>
+      </div>
     </div>
   </section>
-
-  <!-- CASE 01 — ELYSIAN -->
-  <div class="case-block" id="elysian">
-    <div class="case-inner">
-      <div class="case-header reveal">
-        <div>
-          <div class="case-num">Case Study 01</div>
-          <div class="case-industry-tag">Travel & Tours</div>
-          <h2 class="case-title">ELYSIAN<br>TRAVEL</h2>
-          <p class="case-subtitle">A premium luxury travel brand offering curated experiences beyond the ordinary. The website design reflects top-tier elegance and smooth user experience.</p>
-        </div>
-        <div class="case-metrics-side">
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">100</span>%</div>
-            <div class="case-metric-lbl">Custom Design</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">1.2</span>s</div>
-            <div class="case-metric-lbl">Page load time</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">98</span></div>
-            <div class="case-metric-lbl">Google PageSpeed</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-body">
-        <div class="reveal">
-          <div class="case-col-title">The Project</div>
-          <div class="case-col-content">
-            <p>Elysian needed a digital presence that matched the exclusivity of their highly curated, luxury travel experiences. They required a platform that didn't just list tours, but sold a lifestyle.</p>
-            <p>In a crowded travel market, the goal was to instantly convey <strong>premium quality</strong> and establish trust with high-net-worth clients from the moment they landed on the page.</p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="case-col-title">Our Solution</div>
-          <div class="case-col-content">
-            <p>We crafted a visually stunning, immersive website featuring high-quality imagery, a dark and sophisticated color palette, and elegant typography.</p>
-            <p>The user journey was optimized for exploring destinations and booking exclusive tours effortlessly. <a href="https://umarhunais.github.io/Elysian" target="_blank" style="color:var(--emerald);"><strong>Visit the Elysian website here.</strong></a></p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <div class="case-col-title">The Value</div>
-          <div class="case-col-content">
-            <p>The new website successfully positioned Elysian as a top-tier luxury brand, providing a seamless gateway for travelers to discover extraordinary destinations.</p>
-            <p>The combination of aesthetic appeal and performance created a digital flagship that works as their best sales tool.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CASE 02 — AROMA -->
-  <div class="case-block alt" id="aroma">
-    <div class="case-inner">
-      <div class="case-header reveal">
-        <div>
-          <div class="case-num">Case Study 02</div>
-          <div class="case-industry-tag">Perfume / Retail</div>
-          <h2 class="case-title">AROMA<br>HOUSE</h2>
-          <p class="case-subtitle">Luxury perfume redefined. An elegant, high-end e-commerce concept for discovering exclusive, world-class fragrances with intuitive navigation.</p>
-        </div>
-        <div class="case-metrics-side">
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">High</span></div>
-            <div class="case-metric-lbl">Conversion Focus</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">100</span>%</div>
-            <div class="case-metric-lbl">Mobile Responsive</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">95</span></div>
-            <div class="case-metric-lbl">Google PageSpeed</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-body">
-        <div class="reveal">
-          <div class="case-col-title">The Project</div>
-          <div class="case-col-content">
-            <p>Aroma required an elegant digital storefront that could properly showcase their luxury fragrance collection. The online experience needed to evoke the same sophistication as their physical products.</p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="case-col-title">Our Solution</div>
-          <div class="case-col-content">
-            <p>We designed a premium interface using a rich dark theme accented with gold. The product presentation was prioritized, making each perfume bottle the hero of the screen.</p>
-            <p><a href="https://umarhunais.github.io/Aroma/" target="_blank" style="color:var(--emerald);"><strong>Visit the Aroma website here.</strong></a></p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <div class="case-col-title">The Value</div>
-          <div class="case-col-content">
-            <p>The result is a visually striking e-commerce presence that elevates the brand perception and provides a frictionless path to purchase for fragrance enthusiasts.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CASE 03 — RANDR -->
-  <div class="case-block" id="randr">
-    <div class="case-inner">
-      <div class="case-header reveal">
-        <div>
-          <div class="case-num">Case Study 03</div>
-          <div class="case-industry-tag">Bakery & Food</div>
-          <h2 class="case-title">R&R SWEET<br>& SAVOURY</h2>
-          <p class="case-subtitle">A warm, appetising landing page for home-made treats in Colombo, capturing both quality and affordability to drive direct WhatsApp orders.</p>
-        </div>
-        <div class="case-metrics-side">
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">Fast</span></div>
-            <div class="case-metric-lbl">Order Flow</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">SEO</span></div>
-            <div class="case-metric-lbl">Optimised</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">99</span></div>
-            <div class="case-metric-lbl">Google PageSpeed</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-body">
-        <div class="reveal">
-          <div class="case-col-title">The Project</div>
-          <div class="case-col-content">
-            <p>R&R Sweet & Savoury is a Colombo-based home kitchen producing quality short eats. They needed a clean, inviting online menu to transition away from sending PDF menus via WhatsApp.</p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="case-col-title">Our Solution</div>
-          <div class="case-col-content">
-            <p>We created a bright, approachable website that puts the food front and center. The layout was structured to guide visitors instinctively toward the "Chat on WhatsApp" and "Order Now" actions.</p>
-            <p><a href="https://umarhunais.github.io/RandR/" target="_blank" style="color:var(--emerald);"><strong>Visit the R&R website here.</strong></a></p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <div class="case-col-title">The Value</div>
-          <div class="case-col-content">
-            <p>By streamlining the ordering process, the website reduces back-and-forth communication time and presents the home bakery as a highly professional local business.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CASE 04 — THUBA -->
-  <div class="case-block alt" id="thuba">
-    <div class="case-inner">
-      <div class="case-header reveal">
-        <div>
-          <div class="case-num">Case Study 04</div>
-          <div class="case-industry-tag">Modest Fashion</div>
-          <h2 class="case-title">THUBA<br>HIJABS</h2>
-          <p class="case-subtitle">An elegant e-commerce experience for Sri Lanka's finest collection of premium hijabs and modest fashion, emphasizing grace and timeless style.</p>
-        </div>
-        <div class="case-metrics-side">
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">Chic</span></div>
-            <div class="case-metric-lbl">Minimalist UI</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">Store</span></div>
-            <div class="case-metric-lbl">Integration</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">96</span></div>
-            <div class="case-metric-lbl">Google PageSpeed</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-body">
-        <div class="reveal">
-          <div class="case-col-title">The Project</div>
-          <div class="case-col-content">
-            <p>Thuba required an elegant online platform to showcase their premium modest fashion lines. The store needed to feel high-end, clean, and entirely focused on the intricate details of their collections.</p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="case-col-title">Our Solution</div>
-          <div class="case-col-content">
-            <p>We delivered a minimalist, editorial-style interface with crisp typography and ample whitespace. This allowed their product photography to shine, creating a highly refined shopping experience.</p>
-            <p><a href="https://umarhunais.github.io/Thuba/" target="_blank" style="color:var(--emerald);"><strong>Visit the Thuba website here.</strong></a></p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <div class="case-col-title">The Value</div>
-          <div class="case-col-content">
-            <p>The refined aesthetic perfectly aligns with Thuba's brand positioning, appealing directly to their target audience and elevating their online conversion capabilities.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CASE 05 — LEVEN6 -->
-  <div class="case-block" id="leven6">
-    <div class="case-inner">
-      <div class="case-header reveal">
-        <div>
-          <div class="case-num">Case Study 05</div>
-          <div class="case-industry-tag">Marketing Agency</div>
-          <h2 class="case-title">LEVEN6<br>AGENCY</h2>
-          <p class="case-subtitle">A bold, dynamic digital presence for a creative marketing agency helping local brands turn attention into loyal customers through design and strategy.</p>
-        </div>
-        <div class="case-metrics-side">
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">Bold</span></div>
-            <div class="case-metric-lbl">Typography</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">Smooth</span></div>
-            <div class="case-metric-lbl">Animations</div>
-          </div>
-          <div class="case-metric-item">
-            <div class="case-metric-val"><span class="em">100</span>%</div>
-            <div class="case-metric-lbl">Custom Build</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-body">
-        <div class="reveal">
-          <div class="case-col-title">The Project</div>
-          <div class="case-col-content">
-            <p>A marketing agency's website must be its own best case study. Leven6 needed a website that proved their capabilities in design, engagement, and modern web aesthetics.</p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="case-col-title">Our Solution</div>
-          <div class="case-col-content">
-            <p>We created a highly kinetic, bold homepage with large typography and gold accents. The interactions were fine-tuned to capture attention and direct users to explore their portfolio.</p>
-            <p><a href="https://umarhunais.github.io/test6/" target="_blank" style="color:var(--emerald);"><strong>Visit the Leven6 website here.</strong></a></p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <div class="case-col-title">The Value</div>
-          <div class="case-col-content">
-            <p>Leven6 now has an impressive digital headquarters that immediately establishes credibility and creative authority to any prospective client.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- CTA -->
   <div class="cta-section section-full">
     <div class="cta-inner">
-      <div class="section-label reveal" style="justify-content:center;">Your Business, Next</div>
-      <h2 class="cta-title reveal reveal-delay-1">YOUR RESULTS<br>COULD BE<br><span style="color:var(--emerald)">NEXT.</span></h2>
-      <p class="cta-sub reveal reveal-delay-2">Every case study above started with a conversation. One call to understand the business, define the problem, and build something that solves it. Let's start yours.</p>
+      <div class="section-label reveal" style="justify-content:center;">Ready to start?</div>
+      <h2 class="cta-title reveal reveal-delay-1">TELL US<br>WHAT YOU<br><span style="color:var(--emerald)">NEED.</span></h2>
+      <p class="cta-sub reveal reveal-delay-2">Pick a service or describe your project. We'll come back with a clear scope, timeline, and price — usually within 24 hours.</p>
       <div class="cta-actions reveal reveal-delay-3">
         <a href="contact.html" class="btn-primary">
-          Start Your Project
+          Get a Proposal
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="pricing.html" class="btn-ghost">View Pricing</a>
+        <a href="pricing.html" class="btn-ghost">See Pricing</a>
       </div>
     </div>
   </div>
@@ -500,20 +547,20 @@
       <div>
         <div class="footer-col-title">Services</div>
         <ul class="footer-links">
-          <li><a href="services.html">Web Design</a></li>
-          <li><a href="services.html">Conversion Optimisation</a></li>
-          <li><a href="services.html">Speed & Performance</a></li>
-          <li><a href="services.html">Ongoing Support</a></li>
+          <li><a href="#web-design">Web Design</a></li>
+          <li><a href="#conversion">Conversion Optimisation</a></li>
+          <li><a href="#performance">Speed & Performance</a></li>
+          <li><a href="#support">Ongoing Support</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Industries</div>
         <ul class="footer-links">
-          <li><a href="#elysian">Travel & Tours</a></li>
-          <li><a href="#aroma">Perfume & Retail</a></li>
-          <li><a href="#randr">Bakery & Food</a></li>
-          <li><a href="#thuba">Modest Fashion</a></li>
-          <li><a href="#leven6">Marketing Agency</a></li>
+          <li><a href="#">Restaurants</a></li>
+          <li><a href="#">Retail & Fashion</a></li>
+          <li><a href="#">Education</a></li>
+          <li><a href="#">Construction</a></li>
+          <li><a href="#">Beauty & Salons</a></li>
         </ul>
       </div>
     </div>
@@ -527,17 +574,8 @@
     const nav=document.getElementById('nav');
     window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>80);});
     const reveals=document.querySelectorAll('.reveal');
-    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
     reveals.forEach(el=>obs.observe(el));
-
-    // Filter pills (cosmetic)
-    document.querySelectorAll('.filter-pill').forEach(pill=>{
-      pill.addEventListener('click',()=>{
-        document.querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
-        pill.classList.add('active');
-      });
-    });
-
     function toggleMenu(){
       const links=document.querySelector('.nav-links');
       if(links.style.display==='flex'){links.style.display='';}
