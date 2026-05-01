@@ -218,6 +218,31 @@
       height: 1px;
       background: var(--emerald);
     }
+    /* GRID & LASER & GLOW */
+    .grid-pattern {
+      position: fixed; inset: 0;
+      background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 50px 50px; pointer-events: none; z-index: -3;
+    }
+    .bg-glow {
+      position: fixed; width: 100vw; height: 100vw;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.2) 0%, transparent 70%);
+      top: -30vw; left: 50%; transform: translateX(-50%);
+      pointer-events: none; z-index: -2; filter: blur(120px);
+    }
+    .laserbeam {
+      position: fixed; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--emerald) 10%, #fff 50%, var(--emerald) 90%, transparent 100%);
+      box-shadow: 0 0 15px #fff, 0 0 30px var(--emerald), 0 0 60px var(--emerald), 0 0 100px var(--emerald);
+      opacity: 0; pointer-events: none; z-index: -1;
+      animation: laserMove 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @keyframes laserMove {
+      0% { top: -10%; opacity: 0; transform: scaleX(0.8); }
+      5% { opacity: 1; transform: scaleX(1); }
+      95% { opacity: 1; transform: scaleX(1); }
+      100% { top: 110%; opacity: 0; transform: scaleX(0.8); }
+    }
 
     .page-hero-title {
       font-family: var(--font-display);
