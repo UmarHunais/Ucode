@@ -69,7 +69,7 @@
       border-radius: 2px;
     }
 
-    /* ─── NOISE OVERLAY ─── */
+    /* ─── NOISE & GRID OVERLAYS ─── */
     body::before {
       content: '';
       position: fixed;
@@ -78,6 +78,73 @@
       opacity: 0.025;
       pointer-events: none;
       z-index: 9999;
+    }
+
+    .grid-pattern {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 100vw;
+      height: 100vw;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.2) 0%, transparent 70%);
+      top: -30vw;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: -2;
+      filter: blur(120px);
+    }
+
+    .bg-glow-bottom {
+      position: fixed;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(14, 94, 78, 0.1) 0%, transparent 70%);
+      bottom: -20vw;
+      right: -10vw;
+      pointer-events: none;
+      z-index: -2;
+      filter: blur(100px);
+    }
+
+    /* ─── LASERBEAM ─── */
+    .laserbeam {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--emerald) 10%, 
+        #fff 50%, 
+        var(--emerald) 90%, 
+        transparent 100%
+      );
+      box-shadow: 
+        0 0 15px #fff, 
+        0 0 30px var(--emerald), 
+        0 0 60px var(--emerald), 
+        0 0 100px var(--emerald);
+      opacity: 0;
+      pointer-events: none;
+      z-index: -1;
+      animation: laserMove 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes laserMove {
+      0% { top: -10%; opacity: 0; transform: scaleX(0.8); }
+      5% { opacity: 1; transform: scaleX(1); }
+      95% { opacity: 1; transform: scaleX(1); }
+      100% { top: 110%; opacity: 0; transform: scaleX(0.8); }
     }
 
     /* ─── NAV ─── */
@@ -162,7 +229,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 48px 0;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 60px;
       position: relative;
       overflow: hidden;
     }
@@ -199,6 +268,7 @@
     .hero-label {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       font-size: 11px;
       letter-spacing: 3px;
@@ -222,13 +292,15 @@
 
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(60px, 9vw, 140px);
+      font-size: clamp(50px, 8vw, 115px);
       line-height: 0.92;
       letter-spacing: -1px;
       color: var(--white);
       opacity: 0;
       transform: translateY(40px);
       animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .hero-headline .outline {
@@ -239,28 +311,33 @@
       color: transparent;
       -webkit-text-stroke: 1.2px var(--emerald);
       text-stroke: 1.2px var(--emerald);
+      filter: drop-shadow(0 0 15px rgba(14, 94, 78, 0.3));
     }
 
     .hero-headline .accent {
       color: var(--emerald);
+      text-shadow: 0 0 30px rgba(14, 94, 78, 0.5);
     }
 
     .hero-bottom {
       display: flex;
-      align-items: flex-end;
+      flex-direction: row;
+      align-items: flex-start;
       justify-content: space-between;
-      margin-top: 60px;
+      margin-top: 64px;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+      width: 100%;
     }
 
     .hero-sub {
-      max-width: 380px;
+      max-width: 440px;
       font-size: 15px;
       color: var(--gray);
       line-height: 1.7;
       font-weight: 300;
+      text-align: left;
     }
 
     .hero-sub strong {
@@ -330,6 +407,7 @@
     /* ─── STAT PILLS ─── */
     .hero-stats {
       display: flex;
+      justify-content: center;
       gap: 16px;
       margin-top: 64px;
       opacity: 0;
@@ -1106,65 +1184,6 @@
       transform: translateY(-1px);
     }
 
-    /* ─── FAQ ─── */
-    .faq-list {
-      margin-top: 64px;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .faq-q {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 28px 0;
-      cursor: pointer;
-      font-size: 18px;
-      font-weight: 500;
-      gap: 24px;
-      transition: color 0.2s;
-    }
-
-    .faq-q:hover {
-      color: var(--emerald);
-    }
-
-    .faq-icon {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: all 0.3s;
-      color: var(--gray);
-    }
-
-    .faq-item.open .faq-icon {
-      background: var(--emerald);
-      border-color: var(--emerald);
-      color: var(--white);
-      transform: rotate(45deg);
-    }
-
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s;
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.8;
-    }
-
-    .faq-item.open .faq-a {
-      max-height: 200px;
-      padding-bottom: 28px;
-    }
 
     /* ─── CTA ─── */
     .cta-section {
@@ -1511,6 +1530,11 @@
 <body>
 
   <!-- ─── NAV ─── -->
+  <div class="grid-pattern"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-glow-bottom"></div>
+  <div class="laserbeam"></div>
+
   <nav id="nav">
     <a href="index.html" class="nav-brand">U<span>code</span></a>
     <ul class="nav-links">
@@ -1819,6 +1843,102 @@
 
     <div class="cases-grid">
 
+      <!-- FRAMESLK -->
+      <a href="https://umarhunais.github.io/frameslk/" target="_blank" class="case-card reveal" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">FL</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/frameslk.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="FramesLK Preview"></div>
+        <div class="case-tag">Photography</div>
+        <div class="case-title">FramesLK</div>
+        <p class="case-desc">Sri Lanka's premier photography studio capturing timeless moments with elegance and visual storytelling.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Premium</span>
+            <span class="metric-label">Styling</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">98%</span>
+            <span class="metric-label">Speed</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- MYFITNESS -->
+      <a href="https://umarhunais.github.io/myfitness/" target="_blank" class="case-card reveal reveal-delay-1" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">MF</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/myfitness.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="MyFitness Preview"></div>
+        <div class="case-tag">Fitness & Gym</div>
+        <div class="case-title">MyFitness</div>
+        <p class="case-desc">A bold, high-energy fitness studio landing page built to drive memberships and showcase world-class facilities.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">High</span>
+            <span class="metric-label">Conversion</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">24/7</span>
+            <span class="metric-label">Booking</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- VISIONEX -->
+      <a href="https://umarhunais.github.io/VisionEx/" target="_blank" class="case-card reveal" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">VX</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/visionex.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="VisionEx Preview"></div>
+        <div class="case-tag">Photography</div>
+        <div class="case-title">VisionEx</div>
+        <p class="case-desc">Cinematic visual storytelling platform that goes beyond the frame to capture life's most meaningful stories.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Cinematic</span>
+            <span class="metric-label">Feel</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">Modern</span>
+            <span class="metric-label">UX</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CHRONOVA -->
+      <a href="https://umarhunais.github.io/Demo1/" target="_blank" class="case-card reveal reveal-delay-1" style="text-decoration:none; color:inherit; display:block;">
+        <div class="case-card-bg">CH</div>
+        <div class="case-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/chronova.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="Chronova Preview"></div>
+        <div class="case-tag">Luxury Watches</div>
+        <div class="case-title">Chronova</div>
+        <p class="case-desc">A sophisticated digital gallery for premium timepieces, where precision engineering meets timeless artistic design.</p>
+        <div class="case-result">
+          <div class="case-metric">
+            <span class="metric-num">Luxury</span>
+            <span class="metric-label">Branding</span>
+          </div>
+          <div class="case-metric">
+            <span class="metric-num">Fast</span>
+            <span class="metric-label">Performance</span>
+          </div>
+        </div>
+      </a>
+
       <!-- ELYSIAN -->
       <a href="https://umarhunais.github.io/Elysian" target="_blank" class="case-card reveal" style="text-decoration:none; color:inherit; display:block;">
         <div class="case-card-bg">EL</div>
@@ -1891,32 +2011,8 @@
         </div>
       </a>
 
-      <!-- THUBA -->
-      <a href="https://umarhunais.github.io/Thuba/" target="_blank" class="case-card reveal reveal-delay-1" style="text-decoration:none; color:inherit; display:block;">
-        <div class="case-card-bg">TB</div>
-        <div class="case-arrow">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-          </svg>
-        </div>
-        <div class="case-placeholder" style="border:none; overflow:hidden;"><img src="assets/images/thuba.png" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;" alt="Thuba Preview"></div>
-        <div class="case-tag">Modest Fashion</div>
-        <div class="case-title">Thuba</div>
-        <p class="case-desc">An elegant e-commerce experience for Sri Lanka's finest collection of premium hijabs and modest fashion, emphasizing grace and timeless style.</p>
-        <div class="case-result">
-          <div class="case-metric">
-            <span class="metric-num">Minimal</span>
-            <span class="metric-label">Design</span>
-          </div>
-          <div class="case-metric">
-            <span class="metric-num">Smooth</span>
-            <span class="metric-label">UX</span>
-          </div>
-        </div>
-      </a>
-
       <!-- LEVEN6 -->
-      <a href="https://umarhunais.github.io/test6/" target="_blank" class="case-card reveal" style="text-decoration:none; color:inherit; display:block;">
+      <a href="https://umarhunais.github.io/test6/" target="_blank" class="case-card reveal reveal-delay-1" style="text-decoration:none; color:inherit; display:block;">
         <div class="case-card-bg">L6</div>
         <div class="case-arrow">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -2076,102 +2172,6 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ─── FAQ ─── -->
-  <section id="faq">
-
-    <div class="section-label reveal">Questions</div>
-    <h2 class="section-title reveal reveal-delay-1">FREQUENTLY<br><span style="color:var(--emerald)">ASKED.</span></h2>
-
-    <div class="faq-list reveal reveal-delay-2">
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFAQ(this)">
-          <span>You're 17. How do I know the quality will be professional?</span>
-          <div class="faq-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">My age is just a number — my work speaks for itself. Every site in my portfolio was delivered
-          to a paying client who saw real, measurable results. I've spent years studying conversion design, web
-          performance, and modern development. You're not paying for seniority, you're paying for results.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFAQ(this)">
-          <span>How does the 2-week delivery actually work?</span>
-          <div class="faq-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">Week 1: Discovery call, strategy, and design prototype. You review and approve the design.
-          Week 2: Full development, testing, SEO setup, and launch. The only thing that delays this is late feedback
-          from your side — which is why we keep the process structured and clear.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFAQ(this)">
-          <span>What if I don't like the design?</span>
-          <div class="faq-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">You approve the design before we build. We present the full visual prototype first, and you
-          can request revisions until it's right. We don't start coding until you're happy. This eliminates surprises at
-          the end.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFAQ(this)">
-          <span>Can you help with content and copywriting too?</span>
-          <div class="faq-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">Yes — copywriting is included in the Growth and Premium plans. Good copy is what separates a
-          website that looks good from one that converts. We write persuasive, SEO-friendly content tailored to your
-          specific audience in Sri Lanka.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFAQ(this)">
-          <span>Do you offer payment in LKR?</span>
-          <div class="faq-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">Absolutely. All projects can be quoted and paid in Sri Lankan Rupees. We also offer a 50%
-          upfront / 50% on delivery payment structure so there's no risk on your end.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFAQ(this)">
-          <span>What happens after the site launches?</span>
-          <div class="faq-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">Depending on your plan, you get 30–60 days of free post-launch support. That covers bug
-          fixes, small content updates, and any tweaks you need. After that, we offer affordable monthly maintenance
-          packages so your site stays fast and up-to-date.</div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- ─── CTA ─── -->
   <div class="cta-section section-full" id="contact">
     <div class="cta-inner">
@@ -2234,9 +2234,9 @@
         <ul class="footer-links">
           <li><a href="case-studies.html#elysian">Travel & Tours</a></li>
           <li><a href="case-studies.html#aroma">Perfume & Retail</a></li>
-          <li><a href="case-studies.html#randr">Bakery & Food</a></li>
-          <li><a href="case-studies.html#thuba">Modest Fashion</a></li>
-          <li><a href="case-studies.html#leven6">Marketing Agency</a></li>
+          <li><a href="case-studies.html#frameslk">Photography</a></li>
+          <li><a href="case-studies.html#myfitness">Fitness & Gym</a></li>
+          <li><a href="case-studies.html#visionex">Cinematic Visuals</a></li>
         </ul>
       </div>
     </div>
@@ -2278,13 +2278,6 @@
       reveals.forEach(el => el.classList.add('visible'));
     }, 1500);
 
-    // FAQ accordion
-    function toggleFAQ(el) {
-      const item = el.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
 
     // Mobile menu
     function toggleMenu() {
