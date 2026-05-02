@@ -1276,49 +1276,70 @@
         max-width: 520px;
         margin: 0 auto;
       }
-
       .price-card.featured { transform: none; }
       .price-card.featured:hover { transform: translateY(-6px); }
-
       .terms-grid { grid-template-columns: 1fr; }
-
       .process-grid {
         grid-template-columns: 1fr 1fr;
         gap: 48px;
       }
-
       .process-grid::before { display: none; }
       .process-num::after { display: none; }
-
       .addons-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 48px; }
     }
 
     @media (max-width: 768px) {
+      nav { width: calc(100% - 32px); padding: 12px 20px; top: 16px; }
       .nav-links { display: none; }
       .nav-mobile-toggle { display: flex; }
-
-      .page-hero { padding: 140px 24px 60px; }
+      .page-hero { padding: 140px 24px 60px; min-height: auto; }
+      .page-hero-title { font-size: clamp(42px, 12vw, 64px); }
       section { padding: 80px 24px; }
       .process-inner { padding: 80px 24px; }
-
       .process-grid { grid-template-columns: 1fr; gap: 40px; }
-
       .addons-grid { grid-template-columns: 1fr; }
-
-      .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-      }
-
+      .footer-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .footer-brand, .footer-tagline, .footer-contact { margin: 0 auto; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .cta-section { padding: 100px 24px; }
+      .cta-title { font-size: 48px; }
       .divider { margin: 0 24px; width: calc(100% - 48px); }
+      .price-value { font-size: 44px; }
+      .price-card { padding: 32px 24px; }
     }
+
+    @media(max-width:480px) {
+      .page-hero-title { font-size: 40px; }
+      .section-title { font-size: 36px; }
+      .price-value { font-size: 36px; }
+      .compare-wrap { margin-top: 40px; }
+      .faq-q { font-size: 16px; padding: 20px 0; }
+    }
+
+    /* ─── MOBILE NAV DRAWER ─── */
+    .nav-links.mobile-active {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(9, 9, 9, 0.98);
+      padding: 32px 24px;
+      gap: 20px;
+      border-radius: 0 0 20px 20px;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-top: 8px;
+      animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
 
@@ -2089,11 +2110,7 @@
     // Mobile menu
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
-      if (links.style.display === 'flex') {
-        links.style.display = 'none';
-      } else {
-        links.style.cssText = 'display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(9,9,9,0.97); padding:24px 28px; gap:16px; border-radius:0 0 16px 16px; border:1px solid var(--border); border-top:none; margin-top:8px;';
-      }
+      links.classList.toggle('mobile-active');
     }
   </script>
 
