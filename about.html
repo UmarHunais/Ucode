@@ -185,32 +185,72 @@
     .footer-links a:hover{color:var(--white);}
     .footer-bottom{max-width:1400px;margin:0 auto;padding-top:32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--gray);}
 
-    /* RESPONSIVE */
+    /* ─── RESPONSIVE ─── */
     @media(max-width:1100px){
       .founder-grid{grid-template-columns:1fr;gap:64px;}
       .founder-left{position:static;}
-      .founder-portrait{aspect-ratio:16/7;}
+      .founder-portrait{aspect-ratio:16/9;}
       .values-grid{grid-template-columns:1fr 1fr;}
       .stats-strip{grid-template-columns:1fr 1fr;}
       .diff-item{grid-template-columns:48px 1fr;gap:24px;}
       .diff-desc{grid-column:2;}
+      .footer-inner{grid-template-columns:1fr 1fr; gap:48px;}
     }
+
     @media(max-width:768px){
+      nav { width: calc(100% - 32px); padding: 12px 20px; top: 16px; }
       .nav-links{display:none;}
       .nav-mobile-toggle{display:flex;}
-      .page-hero{padding:140px 24px 60px;}
+      .page-hero{padding:140px 24px 60px; min-height: auto;}
+      .page-hero-title{font-size: clamp(42px, 12vw, 64px);}
       section{padding:80px 24px;}
       .values-inner{padding:80px 24px;}
-      .values-header{grid-template-columns:1fr;}
+      .values-header{grid-template-columns:1fr; gap:32px;}
       .values-grid{grid-template-columns:1fr;}
-      .stats-strip{grid-template-columns:1fr 1fr;}
-      .diff-item{grid-template-columns:1fr;}
-      .diff-num{font-size:32px;}
-      .footer-inner{grid-template-columns:1fr;gap:40px;}
-      .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+      .stats-strip{grid-template-columns:repeat(2, 1fr);}
+      .stat-block { padding: 40px 24px; }
+      .stat-block .big { font-size: 48px; }
+      .diff-item{grid-template-columns:1fr; gap:16px;}
+      .diff-num{font-size:36px;}
+      .footer-inner{grid-template-columns:1fr; gap:48px; text-align: center;}
+      .footer-brand, .footer-tagline, .footer-contact { margin: 0 auto; }
+      .footer-bottom{flex-direction:column; gap:12px; text-align:center;}
       .cta-section{padding:100px 24px;}
-      .divider{margin:0 24px;width:calc(100% - 48px);}
+      .cta-title { font-size: 48px; }
+      .divider{margin:0 24px; width:calc(100% - 48px);}
     }
+
+    @media(max-width:480px) {
+      .stats-strip { grid-template-columns: 1fr; }
+      .page-hero-title { font-size: 40px; }
+      .section-title { font-size: 36px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 12px; }
+      .timeline-year { font-size: 24px; }
+    }
+
+    /* ─── MOBILE NAV DRAWER ─── */
+    .nav-links.mobile-active {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(9, 9, 9, 0.98);
+      padding: 32px 24px;
+      gap: 20px;
+      border-radius: 0 0 20px 20px;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-top: 8px;
+      animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
 <body>
@@ -499,10 +539,10 @@
     const reveals=document.querySelectorAll('.reveal');
     const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
     reveals.forEach(el=>obs.observe(el));
-    function toggleMenu(){
-      const links=document.querySelector('.nav-links');
-      if(links.style.display==='flex'){links.style.display='';}
-      else{links.style.cssText='display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(9,9,9,0.97);padding:24px 28px;gap:16px;border-radius:0 0 16px 16px;border:1px solid var(--border);border-top:none;margin-top:8px;';}
+    // Mobile menu
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.classList.toggle('mobile-active');
     }
   </script>
 </body>
