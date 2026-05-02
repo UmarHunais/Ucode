@@ -61,8 +61,8 @@
     .nav-links a:hover,.nav-links a.active{color:var(--white);}
     .nav-cta{background:var(--emerald);color:var(--white)!important;padding:10px 22px;border-radius:50px;font-size:13px!important;font-weight:600!important;transition:background 0.2s,transform 0.2s!important;}
     .nav-cta:hover{background:var(--emerald2)!important;transform:translateY(-1px);}
-    .nav-mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-    .nav-mobile-toggle span{display:block;width:22px;height:1.5px;background:var(--white);border-radius:2px;transition:all 0.3s;}
+    .nav-mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;flex-shrink:0;}
+    .nav-mobile-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s;}
 
     @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
     .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);}
