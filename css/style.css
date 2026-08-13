@@ -650,3 +650,15 @@ textarea { min-height: 150px; resize: vertical; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
+/* Contact form spacing and success message */
+form.feature .btn { margin-top: 18px; }
+.form-success {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(6,59,45,0.06);
+  border: 1px solid rgba(6,59,45,0.08);
+  color: var(--forest);
+  font-weight: 700;
+}
+

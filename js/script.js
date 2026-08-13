@@ -54,3 +54,29 @@ window.addEventListener("scroll", () => {
 });
 
 backTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+// Intercept form submissions for static preview to avoid HTTP 405 from POST
+document.addEventListener('submit', (e) => {
+  const form = e.target;
+  if (!(form instanceof HTMLFormElement)) return;
+  if (!form.classList.contains('feature')) return;
+  e.preventDefault();
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Opening WhatsApp...';
+  }
+
+  const val = (name) => (form.querySelector(`[name="${name}"]`)?.value || '');
+  const message = `Hello UCODE,\nName: ${val('name')}\nEmail: ${val('email')}\nCompany: ${val('company')}\nProject Type: ${val('type')}\nBudget: ${val('budget')}\nTimeline: ${val('timeline')}\n\nDescription:\n${val('description')}`;
+  const waUrl = `https://wa.me/94778502118?text=${encodeURIComponent(message)}`;
+  window.open(waUrl, '_blank');
+
+  // restore button state after short delay; do not reset form so user keeps their inputs
+  setTimeout(() => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Start a Conversation';
+    }
+  }, 1200);
+});
