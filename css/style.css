@@ -369,6 +369,13 @@ p { color: var(--muted); margin: 0; }
   padding-left: 24px;
 }
 
+.ceo-panel h3 {
+  margin: 0 0 8px 0;
+  color: var(--forest);
+}
+.ceo-panel p { margin: 12px 0; color: var(--muted); }
+.ceo-panel .ceo-signature { margin-top: 14px; font-weight: 700; color: var(--dark); }
+
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
