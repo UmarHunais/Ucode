@@ -80,3 +80,5 @@ document.addEventListener('submit', (e) => {
     }
   }, 1200);
 });
+
+// Carousel handled via CSS keyframe animations for reliable crossfade.
