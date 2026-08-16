@@ -69,7 +69,7 @@ document.addEventListener('submit', (e) => {
 
   const val = (name) => (form.querySelector(`[name="${name}"]`)?.value || '');
   const message = `Hello UCODE,\nName: ${val('name')}\nEmail: ${val('email')}\nCompany: ${val('company')}\nProject Type: ${val('type')}\nBudget: ${val('budget')}\nTimeline: ${val('timeline')}\n\nDescription:\n${val('description')}`;
-  const waUrl = `https://wa.me/94778502118?text=${encodeURIComponent(message)}`;
+  const waUrl = `https://wa.me/94760595115?text=${encodeURIComponent(message)}`;
   window.open(waUrl, '_blank');
 
   // restore button state after short delay; do not reset form so user keeps their inputs
