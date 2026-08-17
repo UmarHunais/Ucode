@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://universalcode.site/sitemap.xml
