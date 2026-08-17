@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z275WW6NR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1Z275WW6NR');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Your Website Is Slow (And How to Fix It) | UCODE</title>
+  <meta name="description"
+    content="Discover the top technical reasons why websites load slowly and practical engineering solutions to optimize page speed and Core Web Vitals.">
+  <link rel="canonical" href="https://universalcode.site/blog/why-your-website-is-slow.html">
+  <meta property="og:title" content="Why Your Website Is Slow (And How to Fix It) | UCODE">
+  <meta property="og:description"
+    content="Discover the top technical reasons why websites load slowly and practical engineering solutions to optimize page speed and Core Web Vitals.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://universalcode.site/blog/why-your-website-is-slow.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Space+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <!-- JSON-LD FAQ Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is page load speed so important for search rankings and sales?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google includes page load speed as a core ranking factor via Core Web Vitals. Studies show that over 53% of mobile visitors abandon a website if page loading takes longer than 3 seconds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the most common technical causes of slow website speed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The primary causes of slow websites are unoptimized images (uncompressed PNGs/JPEGs), page-builder code bloat (Elementor/Divi), excessive third-party plugins, render-blocking JavaScript, and low-quality shared web hosting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does UCODE optimize websites for sub-second page speed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "UCODE optimizes performance by hand-coding in semantic HTML5, modern CSS3, and vanilla JavaScript—completely removing page builder bloat. We compress media assets into WebP format, defer non-critical scripts, and implement clean server cache headers."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body data-page="blog">
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="../index.html"><img class="brand-logo" src="../assets/images/ucode-agency-logo.png" alt="UCODE Agency logo"></a>
+      <div class="nav-links">
+        <a data-nav="home" href="../index.html">Home</a>
+        <a data-nav="about" href="../about.html">About</a>
+        <a data-nav="services" href="../services.html">Services</a>
+        <a data-nav="work" href="../work.html">Work</a>
+        <a data-nav="blog" href="../blog.html">Blog</a>
+        <a data-nav="process" href="../process.html">Process</a>
+        <a data-nav="pricing" href="../pricing.html">Pricing</a>
+        <a data-nav="contact" href="../contact.html">Contact</a>
+      </div>
+      <a class="btn nav-cta" href="../contact.html">Start a Project</a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Performance Engineering</span>
+          <h1>Why Your Website Is Slow (And How to Fix It)</h1>
+          <p class="lead">A deep dive into the root technical causes of slow page loading speeds, how performance impacts revenue and Google rankings, and practical steps to achieve sub-second load times.</p>
+        </div>
+        <div class="editorial-frame reveal">
+          <img src="../images/AboutLaucnh.webp" alt="Website Speed Optimization and Core Web Vitals">
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Takeaways Block (GEO / AI Citability) -->
+    <section class="section soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Speed Benchmarks</span>
+            <h2>Website Speed Facts &amp; Metrics</h2>
+          </div>
+          <p class="lead">Essential facts regarding site load speed, conversion impacts, and Core Web Vitals.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal" style="padding: 28px;">
+            <span class="pill">Conversion Impact</span>
+            <h3 style="margin-top: 12px; margin-bottom: 8px;">The 3-Second Rule</h3>
+            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--muted);">
+              53% of mobile users abandon sites that take longer than 3 seconds to load. Every 1-second delay reduces conversion rates by up to 7%.
+            </p>
+          </div>
+          <div class="card reveal" style="padding: 28px;">
+            <span class="pill">SEO Ranking</span>
+            <h3 style="margin-top: 12px; margin-bottom: 8px;">Core Web Vitals</h3>
+            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--muted);">
+              Google evaluates LCP (Largest Contentful Paint), INP (Interaction to Next Paint), and CLS (Cumulative Layout Shift) directly in its ranking algorithm.
+            </p>
+          </div>
+          <div class="card reveal" style="padding: 28px;">
+            <span class="pill">Engineering</span>
+            <h3 style="margin-top: 12px; margin-bottom: 8px;">Clean Asset Bundles</h3>
+            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--muted);">
+              Replacing heavy page builders with vanilla JS and modern WebP image assets reduces initial page payload by 70% to 90%.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Body -->
+    <section class="section">
+      <div class="container" style="max-width: 900px;">
+        <article class="reveal" style="line-height: 1.8; font-size: 1.05rem;">
+          <span class="eyebrow">Root Causes</span>
+          <h2 style="font-size: 2.2rem; margin-top: 8px; margin-bottom: 20px;">The 5 Main Technical Causes of Slow Websites</h2>
+          <p>
+            When a prospective client opens your website on a mobile device over a 4G connection in Sri Lanka, every second counts. If your page takes 5 seconds to load, over half of your prospective visitors will bounce to a competitor before even reading your headline.
+          </p>
+
+          <h3 style="font-size: 1.5rem; margin-top: 32px; margin-bottom: 12px;">1. Bloated Visual Page Builders</h3>
+          <p>
+            Drag-and-drop website builders (such as Elementor, Divi, or WPBakery) generate excessive wrapper HTML tags, unminified CSS files, and unnecessary JavaScript libraries for simple layouts. This bloat forces browsers to parse megabytes of redundant code before rendering text.
+          </p>
+
+          <h3 style="font-size: 1.5rem; margin-top: 32px; margin-bottom: 12px;">2. Uncompressed Image Files</h3>
+          <p>
+            Uploading raw JPEGs or PNGs straight from a camera or smartphone introduces massive 5MB–10MB image files. Converting media assets to modern WebP format and setting explicit width/height dimensions dramatically reduces file sizes without sacrificing visual clarity.
+          </p>
+
+          <h3 style="font-size: 1.5rem; margin-top: 32px; margin-bottom: 12px;">3. Excessive Third-Party Plugins &amp; Tracking Scripts</h3>
+          <p>
+            Every active plugin, tracking pixel, live chat widget, or external font script creates an extra HTTP request. When a site loads 30+ plugins, requests block the main browser thread.
+          </p>
+
+          <h3 style="font-size: 1.5rem; margin-top: 32px; margin-bottom: 12px;">4. Render-Blocking JavaScript &amp; CSS</h3>
+          <p>
+            If CSS and JavaScript files are placed synchronously at the top of the `&lt;head&gt;` tag without `async` or `defer` attributes, the browser halts rendering page content until those scripts finish downloading.
+          </p>
+
+          <h3 style="font-size: 1.5rem; margin-top: 32px; margin-bottom: 12px;">5. Poor Shared Hosting Infrastructure</h3>
+          <p>
+            Inexpensive shared hosting plans place hundreds of websites on a single server, creating severe Time to First Byte (TTFB) delays during traffic spikes.
+          </p>
+
+          <hr style="margin: 48px 0; border: none; border-top: 1px solid var(--line);">
+
+          <span class="eyebrow">Solutions</span>
+          <h2 style="font-size: 2.2rem; margin-top: 8px; margin-bottom: 20px;">How UCODE Fixes Website Speed</h2>
+          <p>
+            At UCODE, speed is an foundational engineering priority, not an after-thought plugin fix. We hand-code our web builds using lightweight semantic HTML, modular CSS, and vanilla JavaScript—eliminating page builder bloat entirely.
+          </p>
+          <p>
+            For example, when we engineered the <a href="../blog/natures-treasure-case-study.html">Natures Treasure custom platform</a>, we hand-coded the storefront, product displays, and investment ROI calculator to achieve sub-second execution speeds. Learn more about our <a href="../services.html">performance optimization &amp; development offerings</a>.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section soft">
+      <div class="container" style="max-width: 900px;">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          <p class="lead">Answers to common website speed and optimization questions.</p>
+        </div>
+        <div class="feature-list reveal">
+          <div class="feature" style="margin-bottom: 24px;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Why is page load speed so important for search rankings and sales?</h3>
+            <p>Google includes page load speed as a core ranking factor via Core Web Vitals. Studies show that over 53% of mobile visitors abandon a website if page loading takes longer than 3 seconds.</p>
+          </div>
+          <div class="feature" style="margin-bottom: 24px;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px;">What are the most common technical causes of slow website speed?</h3>
+            <p>The primary causes of slow websites are unoptimized images (uncompressed PNGs/JPEGs), page-builder code bloat (Elementor/Divi), excessive third-party plugins, render-blocking JavaScript, and low-quality shared web hosting.</p>
+          </div>
+          <div class="feature">
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px;">How does UCODE optimize websites for sub-second page speed?</h3>
+            <p>UCODE optimizes performance by hand-coding in semantic HTML5, modern CSS3, and vanilla JavaScript—completely removing page builder bloat. We compress media assets into WebP format, defer non-critical scripts, and implement clean server cache headers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="section">
+      <div class="container cta-band reveal">
+        <div>
+          <span class="eyebrow">Optimize Performance</span>
+          <h2>Tired of a slow website losing you customers?</h2>
+          <p>Explore our <a href="../services.html" style="color: inherit; text-decoration: underline;">speed optimization services</a>, review our <a href="../pricing.html" style="color: inherit; text-decoration: underline;">transparent package options</a>, or talk directly with our technical team.</p>
+        </div>
+        <a class="btn lime" href="../contact.html">Start a Conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="logo" href="../index.html"><img class="brand-logo" src="../assets/images/ucode-agency-logo.png" alt="UCODE Agency logo"></a>
+        <p>Premium website design and development for ambitious businesses.</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../work.html">Work</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <a href="../contact.html">Project inquiry</a>
+        <a href="https://universalcode.site">universalcode.site</a>
+        <p><a href="mailto:ucodelk26@gmail.com">ucodelk26@gmail.com</a></p>
+      </div>
+      <div>
+        <h3>Social</h3>
+        <a href="https://www.instagram.com/ucodelk/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://wa.me/94760595115" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>UCODE. All rights reserved.</span>
+      <span>Co-Founders: Abdullah Arshad (CEO) &amp; Umar Hunais (COO).</span>
+    </div>
+  </footer>
+
+  <button class="back-top" type="button" aria-label="Back to top">Top</button>
+  <script src="../js/script.js"></script>
+</body>
+
+</html>

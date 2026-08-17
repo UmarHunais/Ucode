@@ -35,6 +35,8 @@
   .metric-tile { right: 12px; top: 18px; }
   .mock-card { left: 12px; bottom: 18px; }
   .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-3.blog-grid { gap: 28px; }
+  .article-card-body { padding: 20px; }
   .service-row { grid-template-columns: 72px 1fr; }
   .service-row > div:last-child { grid-column: 2; }
   .stats { grid-template-columns: repeat(2, 1fr); }
