@@ -1004,3 +1004,41 @@ form.feature .btn { margin-top: 18px; }
   margin-top: auto;
 }
 
+/* Blog Article Author Byline */
+.article-author {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.author-name {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.author-name strong {
+  color: var(--dark);
+}
+.author-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--forest);
+  transition: color 0.2s ease;
+}
+.author-link:hover {
+  color: var(--lime);
+}
+html.dark .author-link {
+  color: var(--lime);
+}
+
