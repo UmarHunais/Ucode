@@ -225,3 +225,168 @@ document.addEventListener('submit', (e) => {
   });
 })();
 
+/* ==================================================================== */
+/* Automatic Regional Pricing System                                    */
+/* ==================================================================== */
+(function initRegionalPricing() {
+  const regionalPricing = {
+    LK: {
+      currency: "LKR",
+      packages: { 20000: 20000, 30000: 30000 },
+      maint: { 5000: 5000 }
+    },
+    SA: {
+      currency: "SAR",
+      packages: { 20000: 500, 30000: 800 },
+      maint: { 5000: 125 }
+    },
+    AU: {
+      currency: "AUD",
+      packages: { 20000: 300, 30000: 500 },
+      maint: { 5000: 75 }
+    }
+  };
+
+  const defaultRegion = regionalPricing.LK;
+
+  // =========================================================================
+  // DEV/TESTING OVERRIDE (Temporary: accessible via window.__REGION_TEST__)
+  // Can be set to "LK", "SA", "AU", "US", or null/undefined in Chrome DevTools
+  // =========================================================================
+  let _devRegionTest = (typeof window.__REGION_TEST__ === 'string' && window.__REGION_TEST__.trim()) ? window.__REGION_TEST__.trim().toUpperCase() : null;
+
+  Object.defineProperty(window, '__REGION_TEST__', {
+    get() {
+      return _devRegionTest;
+    },
+    set(val) {
+      _devRegionTest = (typeof val === 'string' && val.trim()) ? val.trim().toUpperCase() : null;
+      if (_devRegionTest) {
+        updatePrices(_devRegionTest);
+      } else {
+        getVisitorCountry().then(updatePrices);
+      }
+    },
+    configurable: true,
+    enumerable: true
+  });
+
+  // Support URL query override for testing, e.g. ?country=SA or ?country=AU
+  const urlParams = new URLSearchParams(window.location.search);
+  const countryQuery = (urlParams.get('country') || '').toUpperCase();
+
+  async function getVisitorCountry() {
+    // DEV/TESTING OVERRIDE: Check DevTools window.__REGION_TEST__ first
+    if (_devRegionTest) {
+      return _devRegionTest;
+    }
+
+    if (countryQuery && (regionalPricing[countryQuery] || countryQuery.length === 2)) {
+      return countryQuery;
+    }
+
+    try {
+      const cached = sessionStorage.getItem('ucode_user_country');
+      if (cached) return cached;
+    } catch (e) {
+      // Ignore storage errors
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2500);
+
+    try {
+      const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+      clearTimeout(timeoutId);
+      if (res.ok) {
+        const data = await res.json();
+        const country = (data.country_code || data.country || '').toUpperCase();
+        if (country) {
+          try { sessionStorage.setItem('ucode_user_country', country); } catch (e) {}
+          return country;
+        }
+      }
+    } catch (e) {
+      // Ignore fetch / timeout error
+    }
+
+    try {
+      const controller2 = new AbortController();
+      const timeoutId2 = setTimeout(() => controller2.abort(), 1500);
+      const res2 = await fetch('https://api.country.is', { signal: controller2.signal });
+      clearTimeout(timeoutId2);
+      if (res2.ok) {
+        const data2 = await res2.json();
+        const country2 = (data2.country || '').toUpperCase();
+        if (country2) {
+          try { sessionStorage.setItem('ucode_user_country', country2); } catch (e) {}
+          return country2;
+        }
+      }
+    } catch (e) {
+      // Ignore fallback fetch error
+    }
+
+    return 'LK';
+  }
+
+  function formatNumber(val) {
+    return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(Math.round(val));
+  }
+
+  function updatePrices(countryCode) {
+    const config = regionalPricing[countryCode] || defaultRegion;
+    const { currency, packages = {}, maint = {}, multiplier = 1 } = config;
+
+    // 1. Update Package Base Prices ([data-base-price])
+    document.querySelectorAll('[data-base-price]').forEach((el) => {
+      const baseVal = parseFloat(el.getAttribute('data-base-price'));
+      if (isNaN(baseVal)) return;
+
+      const calcVal = packages[baseVal] !== undefined ? packages[baseVal] : (baseVal * multiplier);
+      const formatted = formatNumber(calcVal);
+      el.textContent = `${currency} ${formatted}`;
+    });
+
+    // 2. Update Maintenance Items ([data-base-maint])
+    document.querySelectorAll('[data-base-maint]').forEach((el) => {
+      const baseVal = parseFloat(el.getAttribute('data-base-maint'));
+      if (isNaN(baseVal)) return;
+
+      const calcVal = maint[baseVal] !== undefined ? maint[baseVal] : (baseVal * multiplier);
+      const formatted = formatNumber(calcVal);
+      const formatType = el.getAttribute('data-format') || 'badge';
+
+      if (currency === 'LKR') {
+        if (formatType === 'badge') {
+          el.textContent = `Maintenance: from ${formatted} LKR / month`;
+        } else if (formatType === 'note') {
+          el.textContent = `Domain & database are billed separately. Maintenance starts from ${formatted} LKR/month and varies by website.`;
+        } else if (formatType === 'table') {
+          el.textContent = `From ${formatted} LKR / month`;
+        } else if (formatType === 'terms') {
+          el.textContent = `${formatted} LKR / month`;
+        }
+      } else {
+        if (formatType === 'badge') {
+          el.textContent = `Maintenance: from ${formatted} ${currency} / month`;
+        } else if (formatType === 'note') {
+          el.textContent = `Domain & database are billed separately. Maintenance starts from ${formatted} ${currency}/month and varies by website.`;
+        } else if (formatType === 'table') {
+          el.textContent = `From ${formatted} ${currency} / month`;
+        } else if (formatType === 'terms') {
+          el.textContent = `${formatted} ${currency} / month`;
+        }
+      }
+    });
+  }
+
+  getVisitorCountry()
+    .then((country) => {
+      updatePrices(country);
+    })
+    .catch(() => {
+      updatePrices('LK');
+    });
+})();
+
