@@ -800,7 +800,7 @@ html.dark textarea:focus {
   gap: 42px;
   padding-bottom: 42px;
 }
-.footer-grid h3 { font-size: 1rem; margin-bottom: 14px; }
+.footer-grid h3 { font-size: 1rem; margin-bottom: 14px; color: #ffffff; }
 .footer-grid a, .footer-grid p { color: rgba(255,255,255,.68); display: block; margin-bottom: 10px; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.12);
