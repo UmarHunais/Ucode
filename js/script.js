@@ -390,3 +390,232 @@ document.addEventListener('submit', (e) => {
     });
 })();
 
+/* ==================================================================== */
+/* Social Media Portfolio Multi-Image Modal                             */
+/* ==================================================================== */
+(function initSocialMediaPortfolioModal() {
+  const modalBackdrop = document.getElementById('smPortfolioModal');
+  if (!modalBackdrop) return;
+
+  const modalContainer = modalBackdrop.querySelector('.sm-modal-container');
+  const closeBtn = document.getElementById('smModalClose');
+  const modalTitle = document.getElementById('smModalTitle');
+  const modalBadge = document.getElementById('smModalBadge');
+  const modalCounter = document.getElementById('smModalCounter');
+  const modalDesc = document.getElementById('smModalDesc');
+  const modalImg = document.getElementById('smModalImg');
+  const modalCaption = document.getElementById('smModalCaption');
+  const modalInstaLink = document.getElementById('smModalInstaLink');
+  const prevBtn = document.getElementById('smPrevBtn');
+  const nextBtn = document.getElementById('smNextBtn');
+  const dotsContainer = document.getElementById('smModalDots');
+
+  const projectData = {
+    'natures-treasure': {
+      title: "Nature's Treasure",
+      badge: 'CLIENT WORK',
+      badgeClass: 'sm-badge-client',
+      desc: "Social media direction, content creation and brand storytelling for Nature's Treasure.",
+      instagramUrl: 'https://www.instagram.com/naturestreasurelk/',
+      images: [
+        {
+          src: './images/natureTreasure.webp',
+          caption: "Nature's Treasure official digital storefront and brand positioning"
+        },
+        {
+          src: './images/Tree2.webp',
+          caption: 'Sustainable Agarwood plantation forestry & cultivation storytelling'
+        },
+        {
+          src: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=80',
+          caption: 'Artisanal environmental Oud oil distillation showcase'
+        },
+        {
+          src: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1200&q=80',
+          caption: 'Natural botanical extraction & wellness apothecary aesthetics'
+        }
+      ]
+    },
+    'ucode': {
+      title: 'UCODE Agency',
+      badge: 'AGENCY WORK',
+      badgeClass: 'sm-badge-agency',
+      desc: 'Social media creative systems, brand positioning, carousel architecture and interface showcases for UCODE.',
+      instagramUrl: 'https://www.instagram.com/ucodelk/',
+      images: [
+        {
+          src: './images/Ucode.png',
+          caption: 'UCODE official digital flagship and visual design systems'
+        },
+        {
+          src: './images/AboutLaucnh.webp',
+          caption: 'Creative agency positioning, visual standards and brand direction'
+        },
+        {
+          src: './images/Services.webp',
+          caption: 'Digital service architecture, interface design and technical craftsmanship'
+        },
+        {
+          src: './images/Work.webp',
+          caption: 'Case study curation and digital product portfolio showcases'
+        }
+      ]
+    }
+  };
+
+  let currentProjectKey = null;
+  let currentSlideIndex = 0;
+
+  function renderDots(count, activeIndex) {
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('button');
+      dot.className = `sm-dot${i === activeIndex ? ' active' : ''}`;
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(i);
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goToSlide(newIndex) {
+    if (!currentProjectKey || !projectData[currentProjectKey]) return;
+    const project = projectData[currentProjectKey];
+    const images = project.images;
+    const total = images.length;
+
+    currentSlideIndex = (newIndex + total) % total;
+    const currentItem = images[currentSlideIndex];
+
+    if (modalCounter) {
+      const currentFormatted = String(currentSlideIndex + 1).padStart(2, '0');
+      const totalFormatted = String(total).padStart(2, '0');
+      modalCounter.textContent = `${currentFormatted} / ${totalFormatted}`;
+    }
+
+    if (modalCaption) {
+      modalCaption.textContent = currentItem.caption || '';
+    }
+
+    if (modalImg) {
+      modalImg.classList.add('is-transitioning');
+      setTimeout(() => {
+        modalImg.src = currentItem.src;
+        modalImg.alt = `${project.title} - Slide ${currentSlideIndex + 1}`;
+        modalImg.onload = () => {
+          modalImg.classList.remove('is-transitioning');
+        };
+        // Fallback removal in case cached or error
+        setTimeout(() => modalImg.classList.remove('is-transitioning'), 180);
+      }, 120);
+    }
+
+    // Update active dot
+    if (dotsContainer) {
+      dotsContainer.querySelectorAll('.sm-dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlideIndex);
+      });
+    }
+  }
+
+  function openModal(projectKey) {
+    const project = projectData[projectKey];
+    if (!project) return;
+
+    currentProjectKey = projectKey;
+    currentSlideIndex = 0;
+
+    if (modalTitle) modalTitle.textContent = project.title;
+    if (modalBadge) {
+      modalBadge.textContent = project.badge;
+      modalBadge.className = `sm-card-badge ${project.badgeClass || ''}`;
+    }
+    if (modalDesc) modalDesc.textContent = project.desc;
+    if (modalInstaLink) {
+      modalInstaLink.href = project.instagramUrl || '#';
+    }
+
+    renderDots(project.images.length, 0);
+    goToSlide(0);
+
+    modalBackdrop.classList.add('is-open');
+    modalBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('sm-modal-active');
+  }
+
+  function closeModal() {
+    modalBackdrop.classList.remove('is-open');
+    modalBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('sm-modal-active');
+    currentProjectKey = null;
+  }
+
+  // Bind project card clicks
+  document.querySelectorAll('.sm-project-card').forEach((card) => {
+    const key = card.getAttribute('data-project');
+    if (!key) return;
+
+    // Prevent modal opening when clicking the Instagram button
+    card.querySelectorAll('.sm-card-insta-btn').forEach((instaBtn) => {
+      instaBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    });
+
+    card.addEventListener('click', () => openModal(key));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(key);
+      }
+    });
+  });
+
+  // Close triggers
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeModal();
+    });
+  }
+
+  modalBackdrop.addEventListener('click', (e) => {
+    if (modalContainer && !modalContainer.contains(e.target)) {
+      closeModal();
+    }
+  });
+
+  // Prev / Next triggers
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToSlide(currentSlideIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToSlide(currentSlideIndex + 1);
+    });
+  }
+
+  // Keyboard navigation (ESC, ArrowLeft, ArrowRight)
+  window.addEventListener('keydown', (e) => {
+    if (!modalBackdrop.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
+      closeModal();
+    } else if (e.key === 'ArrowLeft') {
+      goToSlide(currentSlideIndex - 1);
+    } else if (e.key === 'ArrowRight') {
+      goToSlide(currentSlideIndex + 1);
+    }
+  });
+})();
+
+

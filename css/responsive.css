@@ -69,3 +69,120 @@
   .cta-band { padding: 28px; }
   .footer-grid, .footer-bottom { grid-template-columns: 1fr; display: grid; }
 }
+
+/* Social Media Section Responsive Styles */
+@media (max-width: 980px) {
+  .sm-capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sm-showcase-head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .sm-projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .sm-project-card.sm-project-featured {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+  }
+  .sm-project-card.sm-project-featured .sm-card-media {
+    min-height: 280px;
+    height: 280px;
+  }
+  .sm-project-card.sm-project-featured .sm-card-info {
+    padding: 28px;
+  }
+  .sm-inquiry-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 42px 36px;
+    gap: 24px;
+  }
+  .sm-modal-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sm-modal-desc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .sm-section {
+    padding: 74px 0;
+  }
+  .sm-capabilities-wrap {
+    margin-top: 44px;
+  }
+  .sm-capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .sm-showcase-wrap {
+    margin-top: 64px;
+  }
+  .sm-projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .sm-project-card.sm-project-featured {
+    grid-template-columns: 1fr;
+  }
+  .sm-project-card.sm-project-featured .sm-card-media {
+    min-height: 220px;
+    height: 220px;
+  }
+  .sm-project-card.sm-project-featured .sm-card-info {
+    padding: 20px;
+  }
+  .sm-card-info {
+    padding: 20px;
+  }
+  .sm-inquiry-box {
+    margin-top: 56px;
+    padding: 30px 22px;
+  }
+  .sm-inquiry-action, .sm-inquiry-action .btn {
+    width: 100%;
+  }
+  .sm-modal-backdrop {
+    padding: 12px;
+  }
+  .sm-modal-container {
+    max-height: 94vh;
+    border-radius: 8px;
+  }
+  .sm-modal-header {
+    padding: 18px 18px 12px;
+    padding-right: 56px;
+  }
+  .sm-modal-close {
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+  }
+  .sm-modal-viewer {
+    min-height: 240px;
+    max-height: 340px;
+  }
+  .sm-viewer-btn {
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+  .sm-viewer-prev {
+    left: 8px;
+  }
+  .sm-viewer-next {
+    right: 8px;
+  }
+  .sm-modal-footer {
+    padding: 12px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
