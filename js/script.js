@@ -411,28 +411,16 @@ document.addEventListener('submit', (e) => {
   const dotsContainer = document.getElementById('smModalDots');
 
   const projectData = {
-    'natures-treasure': {
-      title: "Nature's Treasure",
+    'oh-donuts-kandy': {
+      title: "Oh Donuts Kandy",
       badge: 'CLIENT WORK',
       badgeClass: 'sm-badge-client',
-      desc: "Social media direction, content creation and brand storytelling for Nature's Treasure.",
-      instagramUrl: 'https://www.instagram.com/naturestreasurelk/',
+      desc: "Social media direction, content creation and brand storytelling for Oh Donuts Kandy.",
+      instagramUrl: null,
       images: [
         {
-          src: './images/natureTreasure.webp',
-          caption: "Nature's Treasure official digital storefront and brand positioning"
-        },
-        {
-          src: './images/Tree2.webp',
-          caption: 'Sustainable Agarwood plantation forestry & cultivation storytelling'
-        },
-        {
-          src: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=80',
-          caption: 'Artisanal environmental Oud oil distillation showcase'
-        },
-        {
-          src: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1200&q=80',
-          caption: 'Natural botanical extraction & wellness apothecary aesthetics'
+          src: './images/ohdonuts.jfif',
+          caption: 'Oh Donuts Kandy official brand identity and social media presence'
         }
       ]
     },
@@ -444,20 +432,20 @@ document.addEventListener('submit', (e) => {
       instagramUrl: 'https://www.instagram.com/ucodelk/',
       images: [
         {
-          src: './images/Ucode.png',
-          caption: 'UCODE official digital flagship and visual design systems'
+          src: './images/ucodeinsta/Frame 54 (1).png',
+          caption: 'Official launch campaign: We are officially live — built to move businesses forward'
         },
         {
-          src: './images/AboutLaucnh.webp',
-          caption: 'Creative agency positioning, visual standards and brand direction'
+          src: './images/ucodeinsta/Frame 3 (2).png',
+          caption: 'Web systems messaging: We build websites that grow your business'
         },
         {
-          src: './images/Services.webp',
-          caption: 'Digital service architecture, interface design and technical craftsmanship'
+          src: './images/ucodeinsta/Frame 158 (3).png',
+          caption: 'Campaign promotional creative: Get your business online starting from LKR 20,000'
         },
         {
-          src: './images/Work.webp',
-          caption: 'Case study curation and digital product portfolio showcases'
+          src: './images/ucodeinsta/Untitled (2).png',
+          caption: 'Client acquisition showcase: Looking for a website that actually gets you clients?'
         }
       ]
     }
@@ -536,7 +524,13 @@ document.addEventListener('submit', (e) => {
     }
     if (modalDesc) modalDesc.textContent = project.desc;
     if (modalInstaLink) {
-      modalInstaLink.href = project.instagramUrl || '#';
+      if (project.instagramUrl) {
+        modalInstaLink.href = project.instagramUrl;
+        modalInstaLink.style.display = 'inline-flex';
+      } else {
+        modalInstaLink.href = '#';
+        modalInstaLink.style.display = 'none';
+      }
     }
 
     renderDots(project.images.length, 0);
