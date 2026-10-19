@@ -381,219 +381,281 @@
     <div class="container footer-bottom"><span>UCODE. All rights reserved.</span><span>Co-Founders: Abdullah Arshad
         (CEO) &amp; Umar Hunais (COO).</span></div>
   </footer>
-  <button class="back-top" type="button" aria-label="Back to top">Top</button>
   <script src="js/script.js"></script>
-</body>
-<!-- UCODE AI Chatbot Widget -->
-<style>
-  #ucode-chat-wrapper {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 9999;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
 
-  #ucode-chat-toggle {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #0a0a0a;
-    color: #ffffff;
-    border: 1px solid #262626;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
+  <!-- UCODE AI Chatbot Widget -->
+  <style>
+    .back-top {
+      display: none !important;
+    }
 
-  #ucode-chat-toggle:hover {
-    transform: scale(1.05);
-    background: #171717;
-  }
+    #ucode-chat-wrapper {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
 
-  #ucode-chat-box {
-    display: none;
-    flex-direction: column;
-    width: 350px;
-    height: 480px;
-    max-width: calc(100vw - 48px);
-    background: #0d0d0d;
-    border: 1px solid #262626;
-    border-radius: 16px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    margin-bottom: 12px;
-  }
+    #ucode-chat-toggle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #063b2d;
+      color: #ffffff;
+      border: 1px solid rgba(6, 59, 45, 0.2);
+      box-shadow: 0 8px 24px rgba(6, 59, 45, 0.25), 0 2px 6px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
 
-  #ucode-chat-box.open {
-    display: flex;
-  }
+    #ucode-chat-toggle:hover {
+      transform: scale(1.06);
+      background: #0b4b3a;
+      box-shadow: 0 12px 28px rgba(6, 59, 45, 0.32), 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-  .ucode-chat-header {
-    padding: 16px;
-    background: #141414;
-    border-bottom: 1px solid #262626;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-  }
+    #ucode-chat-box {
+      display: none;
+      flex-direction: column;
+      width: 360px;
+      height: 490px;
+      max-width: calc(100vw - 40px);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
 
-  .ucode-chat-header h4 {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
+    #ucode-chat-box.open {
+      display: flex;
+    }
 
-  .ucode-chat-header span {
-    font-size: 12px;
-    color: #a3a3a3;
-  }
+    .ucode-chat-header {
+      padding: 16px 18px;
+      background: #ffffff;
+      border-bottom: 1px solid #f0f2f5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #111111;
+    }
 
-  #ucode-chat-messages {
-    flex: 1;
-    padding: 16px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+    .ucode-chat-header h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111111;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  .ucode-msg {
-    max-width: 82%;
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-size: 13.5px;
-    line-height: 1.45;
-    word-wrap: break-word;
-  }
+    .ucode-chat-header .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      display: inline-block;
+    }
 
-  .ucode-msg.bot {
-    background: #1a1a1a;
-    color: #e5e5e5;
-    align-self: flex-start;
-    border: 1px solid #262626;
-    border-bottom-left-radius: 4px;
-  }
+    .ucode-chat-header span {
+      font-size: 12px;
+      color: #64748b;
+      display: block;
+      margin-top: 2px;
+    }
 
-  .ucode-msg.user {
-    background: #ffffff;
-    color: #0a0a0a;
-    align-self: flex-end;
-    font-weight: 500;
-    border-bottom-right-radius: 4px;
-  }
+    .ucode-chat-close-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
 
-  .ucode-chat-input {
-    display: flex;
-    padding: 12px;
-    background: #141414;
-    border-top: 1px solid #262626;
-    gap: 8px;
-  }
+    .ucode-chat-close-btn:hover {
+      color: #111111;
+      background: #f1f5f9;
+    }
 
-  .ucode-chat-input input {
-    flex: 1;
-    background: #0a0a0a;
-    border: 1px solid #262626;
-    border-radius: 8px;
-    padding: 10px 12px;
-    color: #fff;
-    font-size: 13.5px;
-    outline: none;
-  }
+    #ucode-chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fafbfc;
+    }
 
-  .ucode-chat-input input:focus {
-    border-color: #525252;
-  }
+    #ucode-chat-messages::-webkit-scrollbar {
+      width: 5px;
+    }
 
-  .ucode-chat-input button {
-    background: #ffffff;
-    color: #0a0a0a;
-    border: none;
-    border-radius: 8px;
-    padding: 0 14px;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-  }
-</style>
+    #ucode-chat-messages::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 4px;
+    }
 
-<div id="ucode-chat-wrapper">
-  <div id="ucode-chat-box">
-    <div class="ucode-chat-header">
-      <div>
-        <h4>UCODE Assistant</h4>
-        <span>Web Design & Digital Marketing</span>
+    .ucode-msg {
+      max-width: 82%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .ucode-msg.bot {
+      background: #ffffff;
+      color: #1e293b;
+      align-self: flex-start;
+      border: 1px solid #e2e8f0;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .ucode-msg.user {
+      background: #063b2d;
+      color: #ffffff;
+      align-self: flex-end;
+      font-weight: 500;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 4px rgba(6, 59, 45, 0.15);
+    }
+
+    .ucode-chat-input {
+      display: flex;
+      padding: 12px 14px;
+      background: #ffffff;
+      border-top: 1px solid #f0f2f5;
+      gap: 8px;
+    }
+
+    .ucode-chat-input input {
+      flex: 1;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #111111;
+      font-size: 13.5px;
+      outline: none;
+      transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .ucode-chat-input input::placeholder {
+      color: #94a3b8;
+    }
+
+    .ucode-chat-input input:focus {
+      border-color: #063b2d;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(6, 59, 45, 0.08);
+    }
+
+    .ucode-chat-input button {
+      background: #063b2d;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 0 16px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .ucode-chat-input button:hover {
+      background: #0b4b3a;
+    }
+  </style>
+
+  <div id="ucode-chat-wrapper">
+    <div id="ucode-chat-box">
+      <div class="ucode-chat-header">
+        <div>
+          <h4><span class="status-dot"></span> UCODE Assistant</h4>
+          <span>Web Design & Digital Marketing</span>
+        </div>
+        <button class="ucode-chat-close-btn" onclick="toggleUcodeChat()" aria-label="Close Chat">&times;</button>
       </div>
-      <button onclick="toggleUcodeChat()"
-        style="background:none;border:none;color:#a3a3a3;cursor:pointer;font-size:18px;">&times;</button>
+      <div id="ucode-chat-messages">
+        <div class="ucode-msg bot">Hi! 👋 Looking to build a high-converting website or launch a marketing campaign? Ask
+          me anything about UCODE.</div>
+      </div>
+      <form class="ucode-chat-input" onsubmit="sendUcodeMessage(event)">
+        <input type="text" id="ucode-user-input" placeholder="Ask about services, pricing..." required
+          autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
     </div>
-    <div id="ucode-chat-messages">
-      <div class="ucode-msg bot">Hi! 👋 Looking to build a high-converting website or launch a marketing campaign? Ask
-        me anything about UCODE.</div>
-    </div>
-    <form class="ucode-chat-input" onsubmit="sendUcodeMessage(event)">
-      <input type="text" id="ucode-user-input" placeholder="Ask about services, pricing..." required
-        autocomplete="off" />
-      <button type="submit">Send</button>
-    </form>
+
+    <button id="ucode-chat-toggle" onclick="toggleUcodeChat()" aria-label="Open Chat">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
   </div>
 
-  <button id="ucode-chat-toggle" onclick="toggleUcodeChat()" aria-label="Open Chat">
-    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-  </button>
-</div>
+  <script>
+    const WORKER_URL = "https://ucode-chat-api.ucodelk26.workers.dev/";
+    const chatHistory = [];
 
-<script>
-  const WORKER_URL = "https://ucode-chat-api.ucodelk26.workers.dev/";
-  const chatHistory = [];
-
-  function toggleUcodeChat() {
-    document.getElementById("ucode-chat-box").classList.toggle("open");
-  }
-
-  function appendMessage(text, sender) {
-    const container = document.getElementById("ucode-chat-messages");
-    const div = document.createElement("div");
-    div.className = `ucode-msg ${sender}`;
-    div.textContent = text;
-    container.appendChild(div);
-    container.scrollTop = container.scrollHeight;
-    return div;
-  }
-
-  async function sendUcodeMessage(e) {
-    e.preventDefault();
-    const input = document.getElementById("ucode-user-input");
-    const text = input.value.trim();
-    if (!text) return;
-
-    input.value = "";
-    appendMessage(text, "user");
-    chatHistory.push({ role: "user", parts: [{ text }] });
-
-    const loadingMsg = appendMessage("Thinking...", "bot");
-
-    try {
-      const res = await fetch(WORKER_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ history: chatHistory })
-      });
-      const data = await res.json();
-      loadingMsg.textContent = data.reply || "Sorry, something went wrong.";
-      chatHistory.push({ role: "model", parts: [{ text: loadingMsg.textContent }] });
-    } catch (err) {
-      loadingMsg.textContent = "Connection error. Please try again.";
+    function toggleUcodeChat() {
+      document.getElementById("ucode-chat-box").classList.toggle("open");
     }
-  }
-</script>
+
+    function appendMessage(text, sender) {
+      const container = document.getElementById("ucode-chat-messages");
+      const div = document.createElement("div");
+      div.className = `ucode-msg ${sender}`;
+      div.textContent = text;
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+      return div;
+    }
+
+    async function sendUcodeMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById("ucode-user-input");
+      const text = input.value.trim();
+      if (!text) return;
+
+      input.value = "";
+      appendMessage(text, "user");
+      chatHistory.push({ role: "user", parts: [{ text }] });
+
+      const loadingMsg = appendMessage("Thinking...", "bot");
+
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ history: chatHistory })
+        });
+        const data = await res.json();
+        loadingMsg.textContent = data.reply || "Sorry, something went wrong.";
+        chatHistory.push({ role: "model", parts: [{ text: loadingMsg.textContent }] });
+      } catch (err) {
+        loadingMsg.textContent = "Connection error. Please try again.";
+      }
+    }
+  </script>
+</body>
 
 </html>
