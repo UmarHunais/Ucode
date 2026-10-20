@@ -1,0 +1,204 @@
+{
+  "crawlDate": "2026-10-19T18:16:20.864Z",
+  "baseUrl": "https://universalcode.site",
+  "totalDiscovered": 20,
+  "processed": 20,
+  "failed": 0,
+  "skipped": 0,
+  "pages": [
+    {
+      "file": "index.html",
+      "url": "https://universalcode.site/",
+      "title": "UCODE | Web Design & Digital Marketing Agency in Sri Lanka",
+      "description": "UCODE is a premier web design, website development, and social media marketing agency in Sri Lanka crafting custom, high-performance digital experiences.",
+      "status": "SUCCESS",
+      "bytes": 27028,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "about.html",
+      "url": "https://universalcode.site/about.html",
+      "title": "About UCODE | Web Design & Digital Agency in Sri Lanka",
+      "description": "Discover UCODE, a Sri Lanka-based web design, custom software development, and digital marketing agency led by Abdullah Arshad and Umar Hunais.",
+      "status": "SUCCESS",
+      "bytes": 16468,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "services.html",
+      "url": "https://universalcode.site/services.html",
+      "title": "Web Design, Development & Social Media Services Sri Lanka | UCODE",
+      "description": "Explore UCODE services in Sri Lanka: custom website design, web development, UI/UX, SEO-ready development, CMS backends, and full-service social media management.",
+      "status": "SUCCESS",
+      "bytes": 29710,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "work.html",
+      "url": "https://universalcode.site/work.html",
+      "title": "Work & Portfolio | Web Design & Development Sri Lanka | UCODE",
+      "description": "View UCODE",
+      "status": "SUCCESS",
+      "bytes": 24630,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "pricing.html",
+      "url": "https://universalcode.site/pricing.html",
+      "title": "Website Design Pricing & Packages Sri Lanka | UCODE",
+      "description": "Transparent website design and development pricing in Sri Lanka. Compare Basic, Premium, and Custom packages starting from LKR 20,000 with clear deliverables.",
+      "status": "SUCCESS",
+      "bytes": 19778,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "process.html",
+      "url": "https://universalcode.site/process.html",
+      "title": "Our Web Design & Development Process | UCODE Sri Lanka",
+      "description": "Learn how UCODE builds high-performance websites in Sri Lanka: an agile 7-stage process from discovery, UI/UX design, and custom development to launch and support.",
+      "status": "SUCCESS",
+      "bytes": 10963,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "contact.html",
+      "url": "https://universalcode.site/contact.html",
+      "title": "Contact UCODE | Web Design & Digital Agency in Sri Lanka",
+      "description": "Contact UCODE in Sri Lanka for custom website design, web development, and social media marketing inquiries. Direct WhatsApp, email, and proposal requests.",
+      "status": "SUCCESS",
+      "bytes": 20844,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "privacy.html",
+      "url": "https://universalcode.site/privacy.html",
+      "title": "Privacy Policy | UCODE Web & Digital Agency",
+      "description": "Read UCODE",
+      "status": "SUCCESS",
+      "bytes": 17827,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "terms.html",
+      "url": "https://universalcode.site/terms.html",
+      "title": "Terms & Conditions | UCODE Web & Digital Agency",
+      "description": "Review UCODE",
+      "status": "SUCCESS",
+      "bytes": 18711,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "blog.html",
+      "url": "https://universalcode.site/blog.html",
+      "title": "Web Design, Development & SEO Insights | UCODE Sri Lanka",
+      "description": "Practical guides and strategic insights on website design, custom web development, SEO, and social media management in Sri Lanka by UCODE.",
+      "status": "SUCCESS",
+      "bytes": 17634,
+      "jsonLdCount": 1
+    },
+    {
+      "file": "blog/natures-treasure-case-study.html",
+      "url": "https://universalcode.site/blog/natures-treasure-case-study.html",
+      "title": "Natures Treasure Case Study | UCODE Digital Agency",
+      "description": "See how UCODE built Nature",
+      "status": "SUCCESS",
+      "bytes": 26996,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/how-to-choose-a-web-design-agency-sri-lanka.html",
+      "url": "https://universalcode.site/blog/how-to-choose-a-web-design-agency-sri-lanka.html",
+      "title": "How to Choose a Web Design Agency in Sri Lanka | UCODE",
+      "description": "A practical guide for Sri Lankan business owners on evaluating web agencies, identifying red flags, and choosing custom code over generic templates.",
+      "status": "SUCCESS",
+      "bytes": 21406,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/website-cost-guide-sri-lanka.html",
+      "url": "https://universalcode.site/blog/website-cost-guide-sri-lanka.html",
+      "title": "Website Cost Guide Sri Lanka | How Much Should a Website Cost? | UCODE",
+      "description": "A transparent guide to website costs in Sri Lanka. Learn how much a business, e-commerce, or custom website costs, key pricing factors, and hidden fees.",
+      "status": "SUCCESS",
+      "bytes": 45041,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/template-vs-custom-website.html",
+      "url": "https://universalcode.site/blog/template-vs-custom-website.html",
+      "title": "Template vs Custom Website: Key Differences | UCODE",
+      "description": "Compare template vs. custom-coded websites. Understand the real trade-offs in page speed, security, scalability, and long-term business cost.",
+      "status": "SUCCESS",
+      "bytes": 19561,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/why-your-website-is-slow.html",
+      "url": "https://universalcode.site/blog/why-your-website-is-slow.html",
+      "title": "Why Your Website Is Slow (And How to Fix It) | UCODE",
+      "description": "Discover the top technical reasons why websites load slowly and practical engineering solutions to optimize page speed and Core Web Vitals.",
+      "status": "SUCCESS",
+      "bytes": 18379,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/what-is-a-cms.html",
+      "url": "https://universalcode.site/blog/what-is-a-cms.html",
+      "title": "What Is a CMS & Does Your Business Need One? | UCODE",
+      "description": "Learn what Content Management Systems (CMS) are, how custom admin backends differ from heavy plugins, and whether your business actually needs one.",
+      "status": "SUCCESS",
+      "bytes": 18521,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/signs-your-website-is-costing-customers.html",
+      "url": "https://universalcode.site/blog/signs-your-website-is-costing-customers.html",
+      "title": "7 Signs Your Website Is Costing You Customers | UCODE",
+      "description": "Identify 7 critical website mistakes driving potential customers away—from slow load times to broken mobile UX—and how custom web engineering fixes them.",
+      "status": "SUCCESS",
+      "bytes": 18053,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/seo-basics-for-small-business.html",
+      "url": "https://universalcode.site/blog/seo-basics-for-small-business.html",
+      "title": "SEO Basics for Small Business Owners: What Matters | UCODE",
+      "description": "A practical guide to technical and content SEO for small business owners—what actually drives Google search rankings versus common myths.",
+      "status": "SUCCESS",
+      "bytes": 19264,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/website-maintenance-after-launch.html",
+      "url": "https://universalcode.site/blog/website-maintenance-after-launch.html",
+      "title": "Website Maintenance: What Happens After Launch? | UCODE",
+      "description": "Understand post-launch website maintenance—why ongoing performance monitoring, security audits, and content updates protect your digital investment.",
+      "status": "SUCCESS",
+      "bytes": 18048,
+      "jsonLdCount": 3
+    },
+    {
+      "file": "blog/ecommerce-vs-business-website.html",
+      "url": "https://universalcode.site/blog/ecommerce-vs-business-website.html",
+      "title": "E-commerce vs Business Website: Which Do You Need? | UCODE",
+      "description": "Compare e-commerce storefronts against lead-generation business websites. Learn which model fits your business goals, technical needs, and budget.",
+      "status": "SUCCESS",
+      "bytes": 18777,
+      "jsonLdCount": 3
+    }
+  ],
+  "categoryBreakdown": {
+    "home": 1,
+    "about": 1,
+    "services": 1,
+    "work": 1,
+    "pricing": 1,
+    "process": 1,
+    "contact": 1,
+    "policy": 2,
+    "blog_index": 1,
+    "case_study": 1,
+    "blog": 9
+  },
+  "totalChunksGenerated": 88
+}
